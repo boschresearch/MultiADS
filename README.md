@@ -9,7 +9,7 @@
 
 
 ## Purpose of the project
-This software is a research prototype, solely developed for and published as part of the publication [MultiADS: Defect-aware Supervision for Multi-type Anomaly Detection and Segmentation in Zero-Shot Learning](https://arxiv.org/abs/2504.06740). It will neither be maintained nor monitored in any way.
+This software is a research prototype, solely developed for and published as part of the publication [MultiADS: Defect-aware Supervision for Multi-type Anomaly Detection and Segmentation in Zero-Shot Learning](https://arxiv.org/abs/2504.06740).
 
 ## Introduction
 ![alt text](images/architecture.png)
@@ -29,17 +29,24 @@ We present MultiADS, the first framework that goes beyond binary “good/bad” 
     conda activate MultiADS
     ```
 ### Datasets
-Please download the datasets of MVTec-AD, VisA, MPDD, MAD, and Real-IAD into the data/ folder. Organize them as follows
+Please download the datasets of MVTec-AD, VisA, MPDD, MAD, and Real-IAD into the data/ folder. Organize them as follows:
 ```bash
-data/
-  mvtec/
-  visa/
-  mpdd/
-  mad_real/
-  mad_sim/
-  real_iad/
+data
+├── mvtec
+│   └── meta.json
+├── visa
+│   ├── meta.json
+│   └── meta_wo_md.json
+├── mpdd
+│   └── meta.json
+├── MAD_Real
+│   └── meta.json
+├── MAD_Sim
+│   └── meta.json
+└── real_iad
+    └── meta.json
 ```
-
+To download our extend visa dataset with segmentation mask for each individual defects. Please visit [VisA_Extended](https://huggingface.co/datasets/zhKingg/VisA_Extended/). Note that in the other datasets, each image contains only **one** type of defect types.
 
 ## Training
 ```bash
@@ -70,10 +77,10 @@ python test.py \
   --checkpoint_path ./exps/mvtec/epoch_1.pth \ 
   --k_shot 4 
 ```
-- dataset: 🎯 dataset to evaluate on
-- data_path: 📂 path to your VisA test images  
-- save_path: 💾 where to write K-shot results
-- checkpoint_path: 🔌 which trained weights to load 
+- dataset: dataset to evaluate on
+- data_path: path to your VisA test images  
+- save_path: where to write K-shot results
+- checkpoint_path: which trained weights to load 
 - k_shot: few-shot number
 
 ### Test Binary Anomaly Detection and Segmentation (Domain Adaption)
