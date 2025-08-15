@@ -160,6 +160,7 @@ cython_debug/
 #.idea/
 
 data/*
+!data/**/
 !data/*.json
 !data/**/*.json
 /exps

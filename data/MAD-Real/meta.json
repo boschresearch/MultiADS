@@ -1,0 +1,5373 @@
+{
+    "train": {
+        "Parrot": [
+            {
+                "img_path": "Parrot/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/45.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/48.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/46.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/47.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ],
+        "Puppy": [
+            {
+                "img_path": "Puppy/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/45.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ],
+        "Pig": [
+            {
+                "img_path": "Pig/train/good/52.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/50.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/45.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/48.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/55.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/53.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/51.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/46.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/49.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/47.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/56.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/54.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/57.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ],
+        "Whale": [
+            {
+                "img_path": "Whale/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/45.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/46.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/47.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ],
+        "Bird": [
+            {
+                "img_path": "Bird/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/50.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/45.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/48.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/51.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/46.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/49.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/47.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ],
+        "Bear": [
+            {
+                "img_path": "Bear/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ],
+        "Scorpion": [
+            {
+                "img_path": "Scorpion/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/50.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/45.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/48.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/46.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/49.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/47.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ],
+        "Turtle": [
+            {
+                "img_path": "Turtle/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ],
+        "Unicorn": [
+            {
+                "img_path": "Unicorn/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/45.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/46.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/47.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ],
+        "Elephant": [
+            {
+                "img_path": "Elephant/train/good/24.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/22.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/45.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/17.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/6.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/43.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/15.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/1.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/10.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/41.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/13.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/36.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/39.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/34.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/4.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/32.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/27.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/30.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/25.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/7.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/8.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/20.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/23.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/46.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/18.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/2.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/21.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/44.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/16.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/47.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/19.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/11.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/42.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/14.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/37.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/5.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/40.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/12.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/35.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/38.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/0.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/33.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/28.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/9.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/31.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/26.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/29.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/train/good/3.jpg",
+                "mask_path": "",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            }
+        ]
+    },
+    "test": {
+        "Parrot": [
+            {
+                "img_path": "Parrot/test/good/1.jpg",
+                "mask_path": "Parrot/ground_truth/good/1.png",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/test/good/4.jpg",
+                "mask_path": "Parrot/ground_truth/good/4.png",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/test/good/2.jpg",
+                "mask_path": "Parrot/ground_truth/good/2.png",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/test/good/0.jpg",
+                "mask_path": "Parrot/ground_truth/good/0.png",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/test/good/3.jpg",
+                "mask_path": "Parrot/ground_truth/good/3.png",
+                "product_cls": "Parrot",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Parrot/test/Missing/22.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/22.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/17.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/17.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/6.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/6.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/15.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/15.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/1.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/1.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/10.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/10.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/13.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/13.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/4.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/4.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/7.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/7.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/8.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/8.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/20.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/20.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/18.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/18.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/2.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/2.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/21.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/21.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/16.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/16.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/19.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/19.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/11.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/11.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/14.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/14.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/5.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/5.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/12.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/12.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/0.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/0.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/9.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/9.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Parrot/test/Missing/3.jpg",
+                "mask_path": "Parrot/ground_truth/Missing/3.png",
+                "product_cls": "Parrot",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            }
+        ],
+        "Puppy": [
+            {
+                "img_path": "Puppy/test/good/1.jpg",
+                "mask_path": "Puppy/ground_truth/good/1.png",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/test/good/4.jpg",
+                "mask_path": "Puppy/ground_truth/good/4.png",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/test/good/2.jpg",
+                "mask_path": "Puppy/ground_truth/good/2.png",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/test/good/0.jpg",
+                "mask_path": "Puppy/ground_truth/good/0.png",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/test/good/3.jpg",
+                "mask_path": "Puppy/ground_truth/good/3.png",
+                "product_cls": "Puppy",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Puppy/test/Stains/17.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/17.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/6.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/6.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/15.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/15.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/1.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/1.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/10.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/10.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/13.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/13.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/4.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/4.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/7.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/7.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/8.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/8.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/18.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/18.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/2.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/2.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/16.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/16.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/19.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/19.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/11.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/11.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/14.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/14.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/5.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/5.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/12.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/12.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/0.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/0.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/9.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/9.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Puppy/test/Stains/3.jpg",
+                "mask_path": "Puppy/ground_truth/Stains/3.png",
+                "product_cls": "Puppy",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            }
+        ],
+        "Pig": [
+            {
+                "img_path": "Pig/test/good/1.jpg",
+                "mask_path": "Pig/ground_truth/good/1.png",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/test/good/4.jpg",
+                "mask_path": "Pig/ground_truth/good/4.png",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/test/good/2.jpg",
+                "mask_path": "Pig/ground_truth/good/2.png",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/test/good/0.jpg",
+                "mask_path": "Pig/ground_truth/good/0.png",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/test/good/3.jpg",
+                "mask_path": "Pig/ground_truth/good/3.png",
+                "product_cls": "Pig",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Pig/test/Missing/6.jpg",
+                "mask_path": "Pig/ground_truth/Missing/6.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/15.jpg",
+                "mask_path": "Pig/ground_truth/Missing/15.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/1.jpg",
+                "mask_path": "Pig/ground_truth/Missing/1.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/10.jpg",
+                "mask_path": "Pig/ground_truth/Missing/10.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/13.jpg",
+                "mask_path": "Pig/ground_truth/Missing/13.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/4.jpg",
+                "mask_path": "Pig/ground_truth/Missing/4.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/7.jpg",
+                "mask_path": "Pig/ground_truth/Missing/7.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/8.jpg",
+                "mask_path": "Pig/ground_truth/Missing/8.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/2.jpg",
+                "mask_path": "Pig/ground_truth/Missing/2.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/16.jpg",
+                "mask_path": "Pig/ground_truth/Missing/16.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/11.jpg",
+                "mask_path": "Pig/ground_truth/Missing/11.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/14.jpg",
+                "mask_path": "Pig/ground_truth/Missing/14.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/5.jpg",
+                "mask_path": "Pig/ground_truth/Missing/5.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/12.jpg",
+                "mask_path": "Pig/ground_truth/Missing/12.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/0.jpg",
+                "mask_path": "Pig/ground_truth/Missing/0.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/9.jpg",
+                "mask_path": "Pig/ground_truth/Missing/9.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Pig/test/Missing/3.jpg",
+                "mask_path": "Pig/ground_truth/Missing/3.png",
+                "product_cls": "Pig",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            }
+        ],
+        "Whale": [
+            {
+                "img_path": "Whale/test/good/1.jpg",
+                "mask_path": "Whale/ground_truth/good/1.png",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/test/good/4.jpg",
+                "mask_path": "Whale/ground_truth/good/4.png",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/test/good/2.jpg",
+                "mask_path": "Whale/ground_truth/good/2.png",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/test/good/0.jpg",
+                "mask_path": "Whale/ground_truth/good/0.png",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/test/good/3.jpg",
+                "mask_path": "Whale/ground_truth/good/3.png",
+                "product_cls": "Whale",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Whale/test/Stains/24.jpg",
+                "mask_path": "Whale/ground_truth/Stains/24.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/22.jpg",
+                "mask_path": "Whale/ground_truth/Stains/22.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/17.jpg",
+                "mask_path": "Whale/ground_truth/Stains/17.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/6.jpg",
+                "mask_path": "Whale/ground_truth/Stains/6.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/15.jpg",
+                "mask_path": "Whale/ground_truth/Stains/15.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/1.jpg",
+                "mask_path": "Whale/ground_truth/Stains/1.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/10.jpg",
+                "mask_path": "Whale/ground_truth/Stains/10.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/13.jpg",
+                "mask_path": "Whale/ground_truth/Stains/13.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/4.jpg",
+                "mask_path": "Whale/ground_truth/Stains/4.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/27.jpg",
+                "mask_path": "Whale/ground_truth/Stains/27.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/30.jpg",
+                "mask_path": "Whale/ground_truth/Stains/30.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/25.jpg",
+                "mask_path": "Whale/ground_truth/Stains/25.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/7.jpg",
+                "mask_path": "Whale/ground_truth/Stains/7.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/8.jpg",
+                "mask_path": "Whale/ground_truth/Stains/8.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/20.jpg",
+                "mask_path": "Whale/ground_truth/Stains/20.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/23.jpg",
+                "mask_path": "Whale/ground_truth/Stains/23.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/18.jpg",
+                "mask_path": "Whale/ground_truth/Stains/18.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/2.jpg",
+                "mask_path": "Whale/ground_truth/Stains/2.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/21.jpg",
+                "mask_path": "Whale/ground_truth/Stains/21.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/16.jpg",
+                "mask_path": "Whale/ground_truth/Stains/16.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/19.jpg",
+                "mask_path": "Whale/ground_truth/Stains/19.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/11.jpg",
+                "mask_path": "Whale/ground_truth/Stains/11.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/14.jpg",
+                "mask_path": "Whale/ground_truth/Stains/14.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/5.jpg",
+                "mask_path": "Whale/ground_truth/Stains/5.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/12.jpg",
+                "mask_path": "Whale/ground_truth/Stains/12.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/0.jpg",
+                "mask_path": "Whale/ground_truth/Stains/0.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/28.jpg",
+                "mask_path": "Whale/ground_truth/Stains/28.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/9.jpg",
+                "mask_path": "Whale/ground_truth/Stains/9.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/31.jpg",
+                "mask_path": "Whale/ground_truth/Stains/31.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/26.jpg",
+                "mask_path": "Whale/ground_truth/Stains/26.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/29.jpg",
+                "mask_path": "Whale/ground_truth/Stains/29.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Whale/test/Stains/3.jpg",
+                "mask_path": "Whale/ground_truth/Stains/3.png",
+                "product_cls": "Whale",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            }
+        ],
+        "Bird": [
+            {
+                "img_path": "Bird/test/good/1.jpg",
+                "mask_path": "Bird/ground_truth/good/1.png",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/test/good/4.jpg",
+                "mask_path": "Bird/ground_truth/good/4.png",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/test/good/2.jpg",
+                "mask_path": "Bird/ground_truth/good/2.png",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/test/good/0.jpg",
+                "mask_path": "Bird/ground_truth/good/0.png",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/test/good/3.jpg",
+                "mask_path": "Bird/ground_truth/good/3.png",
+                "product_cls": "Bird",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bird/test/Missing/17.jpg",
+                "mask_path": "Bird/ground_truth/Missing/17.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/6.jpg",
+                "mask_path": "Bird/ground_truth/Missing/6.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/15.jpg",
+                "mask_path": "Bird/ground_truth/Missing/15.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/1.jpg",
+                "mask_path": "Bird/ground_truth/Missing/1.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/10.jpg",
+                "mask_path": "Bird/ground_truth/Missing/10.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/13.jpg",
+                "mask_path": "Bird/ground_truth/Missing/13.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/4.jpg",
+                "mask_path": "Bird/ground_truth/Missing/4.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/7.jpg",
+                "mask_path": "Bird/ground_truth/Missing/7.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/8.jpg",
+                "mask_path": "Bird/ground_truth/Missing/8.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/20.jpg",
+                "mask_path": "Bird/ground_truth/Missing/20.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/18.jpg",
+                "mask_path": "Bird/ground_truth/Missing/18.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/2.jpg",
+                "mask_path": "Bird/ground_truth/Missing/2.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/21.jpg",
+                "mask_path": "Bird/ground_truth/Missing/21.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/16.jpg",
+                "mask_path": "Bird/ground_truth/Missing/16.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/19.jpg",
+                "mask_path": "Bird/ground_truth/Missing/19.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/11.jpg",
+                "mask_path": "Bird/ground_truth/Missing/11.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/14.jpg",
+                "mask_path": "Bird/ground_truth/Missing/14.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/5.jpg",
+                "mask_path": "Bird/ground_truth/Missing/5.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/12.jpg",
+                "mask_path": "Bird/ground_truth/Missing/12.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/0.jpg",
+                "mask_path": "Bird/ground_truth/Missing/0.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/9.jpg",
+                "mask_path": "Bird/ground_truth/Missing/9.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bird/test/Missing/3.jpg",
+                "mask_path": "Bird/ground_truth/Missing/3.png",
+                "product_cls": "Bird",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            }
+        ],
+        "Bear": [
+            {
+                "img_path": "Bear/test/good/1.jpg",
+                "mask_path": "Bear/ground_truth/good/1.png",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/test/good/4.jpg",
+                "mask_path": "Bear/ground_truth/good/4.png",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/test/good/2.jpg",
+                "mask_path": "Bear/ground_truth/good/2.png",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/test/good/0.jpg",
+                "mask_path": "Bear/ground_truth/good/0.png",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/test/good/3.jpg",
+                "mask_path": "Bear/ground_truth/good/3.png",
+                "product_cls": "Bear",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Bear/test/Stains/22.jpg",
+                "mask_path": "Bear/ground_truth/Stains/22.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/17.jpg",
+                "mask_path": "Bear/ground_truth/Stains/17.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/6.jpg",
+                "mask_path": "Bear/ground_truth/Stains/6.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/15.jpg",
+                "mask_path": "Bear/ground_truth/Stains/15.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/1.jpg",
+                "mask_path": "Bear/ground_truth/Stains/1.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/10.jpg",
+                "mask_path": "Bear/ground_truth/Stains/10.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/13.jpg",
+                "mask_path": "Bear/ground_truth/Stains/13.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/4.jpg",
+                "mask_path": "Bear/ground_truth/Stains/4.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/7.jpg",
+                "mask_path": "Bear/ground_truth/Stains/7.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/8.jpg",
+                "mask_path": "Bear/ground_truth/Stains/8.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/20.jpg",
+                "mask_path": "Bear/ground_truth/Stains/20.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/23.jpg",
+                "mask_path": "Bear/ground_truth/Stains/23.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/18.jpg",
+                "mask_path": "Bear/ground_truth/Stains/18.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/2.jpg",
+                "mask_path": "Bear/ground_truth/Stains/2.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/21.jpg",
+                "mask_path": "Bear/ground_truth/Stains/21.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/16.jpg",
+                "mask_path": "Bear/ground_truth/Stains/16.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/19.jpg",
+                "mask_path": "Bear/ground_truth/Stains/19.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/11.jpg",
+                "mask_path": "Bear/ground_truth/Stains/11.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/14.jpg",
+                "mask_path": "Bear/ground_truth/Stains/14.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/5.jpg",
+                "mask_path": "Bear/ground_truth/Stains/5.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/12.jpg",
+                "mask_path": "Bear/ground_truth/Stains/12.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/0.jpg",
+                "mask_path": "Bear/ground_truth/Stains/0.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/9.jpg",
+                "mask_path": "Bear/ground_truth/Stains/9.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Bear/test/Stains/3.jpg",
+                "mask_path": "Bear/ground_truth/Stains/3.png",
+                "product_cls": "Bear",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            }
+        ],
+        "Scorpion": [
+            {
+                "img_path": "Scorpion/test/good/1.jpg",
+                "mask_path": "Scorpion/ground_truth/good/1.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/test/good/4.jpg",
+                "mask_path": "Scorpion/ground_truth/good/4.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/test/good/2.jpg",
+                "mask_path": "Scorpion/ground_truth/good/2.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/test/good/0.jpg",
+                "mask_path": "Scorpion/ground_truth/good/0.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/test/good/3.jpg",
+                "mask_path": "Scorpion/ground_truth/good/3.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Scorpion/test/Missing/22.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/22.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/17.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/17.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/6.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/6.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/15.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/15.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/1.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/1.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/10.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/10.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/13.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/13.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/4.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/4.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/7.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/7.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/8.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/8.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/20.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/20.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/18.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/18.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/2.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/2.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/21.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/21.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/16.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/16.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/19.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/19.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/11.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/11.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/14.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/14.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/5.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/5.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/12.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/12.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/0.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/0.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/9.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/9.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Scorpion/test/Missing/3.jpg",
+                "mask_path": "Scorpion/ground_truth/Missing/3.png",
+                "product_cls": "Scorpion",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            }
+        ],
+        "Turtle": [
+            {
+                "img_path": "Turtle/test/good/1.jpg",
+                "mask_path": "Turtle/ground_truth/good/1.png",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/test/good/4.jpg",
+                "mask_path": "Turtle/ground_truth/good/4.png",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/test/good/2.jpg",
+                "mask_path": "Turtle/ground_truth/good/2.png",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/test/good/0.jpg",
+                "mask_path": "Turtle/ground_truth/good/0.png",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/test/good/3.jpg",
+                "mask_path": "Turtle/ground_truth/good/3.png",
+                "product_cls": "Turtle",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Turtle/test/Stains/17.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/17.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/6.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/6.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/15.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/15.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/1.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/1.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/10.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/10.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/13.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/13.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/4.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/4.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/7.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/7.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/8.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/8.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/20.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/20.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/18.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/18.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/2.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/2.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/16.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/16.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/19.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/19.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/11.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/11.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/14.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/14.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/5.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/5.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/12.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/12.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/0.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/0.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/9.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/9.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Turtle/test/Stains/3.jpg",
+                "mask_path": "Turtle/ground_truth/Stains/3.png",
+                "product_cls": "Turtle",
+                "defect_cls": "Stains",
+                "anomaly": 1
+            }
+        ],
+        "Unicorn": [
+            {
+                "img_path": "Unicorn/test/good/1.jpg",
+                "mask_path": "Unicorn/ground_truth/good/1.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/test/good/4.jpg",
+                "mask_path": "Unicorn/ground_truth/good/4.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/test/good/2.jpg",
+                "mask_path": "Unicorn/ground_truth/good/2.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/test/good/0.jpg",
+                "mask_path": "Unicorn/ground_truth/good/0.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/test/good/3.jpg",
+                "mask_path": "Unicorn/ground_truth/good/3.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Unicorn/test/Missing/17.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/17.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/6.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/6.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/15.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/15.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/1.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/1.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/10.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/10.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/13.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/13.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/4.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/4.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/7.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/7.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/8.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/8.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/20.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/20.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/18.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/18.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/2.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/2.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/16.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/16.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/19.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/19.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/11.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/11.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/14.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/14.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/5.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/5.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/12.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/12.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/0.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/0.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/9.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/9.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Unicorn/test/Missing/3.jpg",
+                "mask_path": "Unicorn/ground_truth/Missing/3.png",
+                "product_cls": "Unicorn",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            }
+        ],
+        "Elephant": [
+            {
+                "img_path": "Elephant/test/good/1.jpg",
+                "mask_path": "Elephant/ground_truth/good/1.png",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/test/good/4.jpg",
+                "mask_path": "Elephant/ground_truth/good/4.png",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/test/good/2.jpg",
+                "mask_path": "Elephant/ground_truth/good/2.png",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/test/good/0.jpg",
+                "mask_path": "Elephant/ground_truth/good/0.png",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/test/good/3.jpg",
+                "mask_path": "Elephant/ground_truth/good/3.png",
+                "product_cls": "Elephant",
+                "defect_cls": "good",
+                "anomaly": 0
+            },
+            {
+                "img_path": "Elephant/test/Missing/17.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/17.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/6.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/6.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/15.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/15.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/1.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/1.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/10.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/10.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/13.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/13.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/4.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/4.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/7.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/7.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/8.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/8.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/2.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/2.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/16.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/16.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/11.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/11.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/14.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/14.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/5.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/5.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/12.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/12.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/0.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/0.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/9.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/9.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            },
+            {
+                "img_path": "Elephant/test/Missing/3.jpg",
+                "mask_path": "Elephant/ground_truth/Missing/3.png",
+                "product_cls": "Elephant",
+                "defect_cls": "Missing",
+                "anomaly": 1
+            }
+        ]
+    }
+}
