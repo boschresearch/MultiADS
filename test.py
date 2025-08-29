@@ -17,7 +17,8 @@ import torchvision.transforms as transforms
 from sklearn.metrics import auc, roc_auc_score, average_precision_score, f1_score, precision_recall_curve, pairwise
 
 import open_clip
-from few_shot import memory
+from domain_adaption import memory as memory_da
+from few_shot import memory as memory_fs
 from model import LinearLayer
 from dataset import VisaDataset, MVTecDataset, MPDDDataset, MADDataset, RealIADDataset_v2
 from prompts.prompt_ensemble_visa_19cls_test import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_visa
@@ -157,8 +158,13 @@ def test(args):
 
     # few shot
     if args.mode == 'few_shot':
-        mem_features = memory(args.model, model, obj_list, dataset_dir, save_path, preprocess, transform,
+        mem_features = memory_fs(args.model, model, obj_list, dataset_dir, save_path, preprocess, transform,
                               args.k_shot, few_shot_features, dataset_name, device)
+
+    if args.mode == 'domain_adaption':
+        mem_features = memory_da(args.model, model, obj_list, dataset_dir, save_path, preprocess, transform,
+                             few_shot_features, dataset_name, device)
+
 
     # text prompt
     with torch.cuda.amp.autocast(), torch.no_grad():
@@ -258,6 +264,33 @@ def test(args):
                 anomaly_map_few_shot = np.sum(anomaly_maps_few_shot, axis=0)
                 anomaly_map = anomaly_map + anomaly_map_few_shot
             
+            # domain_adaption
+            if args.mode == 'domain_adaption':
+                image_features, patch_tokens = model.encode_image(image, few_shot_features)
+                anomaly_maps_few_shot = []
+                for idx, p in enumerate(patch_tokens):
+                    if 'ViT' in args.model:
+                        p = p[0, 1:, :]
+                    else:
+                        p = p[0].view(p.shape[1], -1).permute(1, 0).contiguous()
+                    cos = pairwise.cosine_similarity(mem_features[cls_name[0]][idx].cpu(), p.cpu()) # (M, N_p)
+                    M, _ = cos.shape
+                    height = int(np.sqrt(cos.shape[1])) # sqrt(N_p)
+                    distances = 1.0 - cos  # (M, N_p)
+
+                    k = max(1, int(np.ceil(M * args.quantile))) # quantile 0.1% 
+                    smallest_kplus1 = np.partition(distances, k, axis=0)[:k+1, :] # nearest k+1 distances (k+1, N_p)
+                    sorted_smallest_kplus1 = np.sort(smallest_kplus1, axis=0)  # (k+1, N_p)
+                    smallest_k = sorted_smallest_kplus1[1:k+1, :] # (k, N_p)
+                    avg_smallest = smallest_k.mean(axis=0)
+                    anomaly_map_few_shot = avg_smallest.reshape(1, 1, height, height)
+                    # anomaly_map_few_shot = np.min((1 - cos), 0).reshape(1, 1, height, height) # nearest neighbour 
+                    anomaly_map_few_shot = F.interpolate(torch.tensor(anomaly_map_few_shot),
+                                                         size=img_size, mode='bilinear', align_corners=True)
+                    anomaly_maps_few_shot.append(anomaly_map_few_shot[0].cpu().numpy())
+                anomaly_map_few_shot = np.sum(anomaly_maps_few_shot, axis=0)
+                anomaly_map = anomaly_map + anomaly_map_few_shot
+
             results['anomaly_maps'].append(anomaly_map)
 
             # visualization
@@ -369,9 +402,12 @@ if __name__ == '__main__':
     parser.add_argument("--features_list", type=int, nargs="+", default=[6, 12, 18, 24], help="features used")
     parser.add_argument("--few_shot_features", type=int, nargs="+", default=[6, 12, 18, 24], help="features used for few shot")
     parser.add_argument("--image_size", type=int, default=518, help="image size")
-    parser.add_argument("--mode", type=str, default="zero_shot", help="zero shot or few shot")
+    parser.add_argument("--mode", type=str, default="zero_shot", help="zero shot or few shot or domain adaption")
     # few shot
     parser.add_argument("--k_shot", type=int, default=10, help="e.g., 10-shot, 5-shot, 1-shot")
+    # domain adaption
+    parser.add_argument("--quantile", type=float, default=0.0001, help="percent of the qunatile of nearest neighbour")
+    
     parser.add_argument("--seed", type=int, default=42, help="random seed")
     args = parser.parse_args()
 
