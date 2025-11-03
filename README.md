@@ -102,17 +102,12 @@ python test_multi_defect.py
 
 ## Citation
 ```
-@article{MultiADS2025,
-  author       = {Ylli Sadikaj and
-                  Hongkuan Zhou and
-                  Lavdim Halilaj and
-                  Stefan Schmid and
-                  Steffen Staab and
-                  Claudia Plant},
-  title        = {MultiADS: Defect-aware Supervision for Multi-type Anomaly Detection
-                  and Segmentation in Zero-Shot Learning},
-  journal      = {CoRR},
-  volume       = {abs/2504.06740},
-  year         = {2025}
+@InProceedings{Sadikaj_2025_ICCV,
+    author    = {Sadikaj, Ylli and Zhou, Hongkuan and Halilaj, Lavdim and Schmid, Stefan and Staab, Steffen and Plant, Claudia},
+    title     = {MultiADS: Defect-aware Supervision for Multi-type Anomaly Detection and Segmentation in Zero-Shot Learning},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2025},
+    pages     = {22978-22988}
 }
 ```
