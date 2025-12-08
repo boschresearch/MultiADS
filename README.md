@@ -4,7 +4,7 @@
 <!-- <p align="center">
   <img src="images/anomaly_inspection2.png" alt="Anomaly segmentation intro" width="400px"/>
 </p> -->
-# MultiADS: Defect-aware Supervision for Multi-type Anomaly Detection and Segmentation in Zero-Shot Learning
+# MultiADS: Defect-aware Supervision for Multi-type Anomaly Detection and Segmentation in Zero-Shot Learning (ICCV2025)
 <div align="center">
 <a href="https://arxiv.org/abs/2504.06740"><img src="https://img.shields.io/badge/arXiv-2310.14414-b31b1b.svg" alt="arXiv Badge"/></a>
 <a href="https://github.com/boschresearch/MultiADS/stargazers"><img src="https://img.shields.io/github/stars/boschresearch/MultiADS" alt="Stars Badge"/></a>
