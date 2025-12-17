@@ -15,12 +15,16 @@
 </div>
 
 ## Purpose of the project
-This software is a research prototype, solely developed for and published as part of the publication [MultiADS: Defect-aware Supervision for Multi-type Anomaly Detection and Segmentation in Zero-Shot Learning](https://arxiv.org/abs/2504.06740) which has been accepted by **ICCV 2025**.
+This software is a research prototype, solely developed for and published as part of the publication [MultiADS: Defect-aware Supervision for Multi-type Anomaly Detection and Segmentation in Zero-Shot Learning](https://arxiv.org/abs/2504.06740), which has been accepted by **ICCV 2025**.
 
 ## Introduction
 ![alt text](images/architecture.png)
-We present MultiADS, the first framework that goes beyond binary “good/bad” inspection to detect, localize, and label multiple defect types simultaneously. Here, we propose the first benchmark for the new task multi-type anomaly segmentation. Meanwhile, MultiADS also achieves state-of-the-art zero- and few-shot performance across six industrial datasets.
+We present MultiADS, the first framework that goes beyond binary “good/bad” inspection to detect, localize, and label multiple defect types simultaneously. Here, we propose the first benchmark for the new task of  multi-type anomaly segmentation. Meanwhile, MultiADS also achieves state-of-the-art zero- and few-shot performance across six industrial datasets.
 
+
+## News
+- 12/07/2025: The extension of MultiADS, Defect-aware Hybrid Prompt Optimization (DAPO), is now available at [here](https://www.arxiv.org/abs/2512.09446). 
+- 06/25/2025: MultiADS has already been accepted by ICCV2025.
 
 ## Installation
 ### Environment
