@@ -15,7 +15,6 @@ from tabulate import tabulate
 import torch.nn.functional as F
 import torchvision.transforms as transforms
 from sklearn.metrics import auc, roc_auc_score, average_precision_score, f1_score, precision_recall_curve, pairwise
-from torchvision.transforms import InterpolationMode
 
 import open_clip
 from domain_adaption import memory as memory_da
@@ -135,29 +134,22 @@ def test(args):
     linearlayer.load_state_dict(checkpoint["trainable_linearlayer"])
 
     # dataset
-    # transforms
-    target_transform_b = transforms.Compose([
-        transforms.Resize((img_size, img_size)),
-        transforms.CenterCrop(img_size),
-        transforms.ToTensor()
-    ])
-    target_transform_type = transforms.Compose([
-        transforms.Resize((img_size, img_size), interpolation=InterpolationMode.NEAREST),
-        transforms.CenterCrop(img_size),
-        transforms.PILToTensor(),  # uint8 [1,H,W], values 0..K-1
-        transforms.Lambda(lambda x: x.squeeze(0).long()),  # [H,W] long
-    ])
+    transform = transforms.Compose([
+            transforms.Resize((img_size, img_size)),
+            transforms.CenterCrop(img_size),
+            transforms.ToTensor()
+        ])
     
     if args.dataset == 'mvtec':
-        test_data = MVTecDataset(root=dataset_dir, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type, aug_rate=-1, mode='test')
+        test_data = MVTecDataset(root=dataset_dir, transform=preprocess, target_transform=transform, aug_rate=-1, mode='test')
     elif args.dataset == 'visa':
-        test_data = VisaDataset(root=dataset_dir, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type, mode='test')
+        test_data = VisaDataset(root=dataset_dir, transform=preprocess, target_transform=transform, mode='test')
     elif args.dataset == 'mpdd':
-        test_data = MPDDDataset(root=dataset_dir, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type, aug_rate=-1, mode='test')
+        test_data = MPDDDataset(root=dataset_dir, transform=preprocess, target_transform=transform, aug_rate=-1, mode='test')
     elif args.dataset == 'mad_sim' or args.dataset == 'mad_real':
-        test_data = MADDataset(root=dataset_dir, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type, mode='test')
+        test_data = MADDataset(root=dataset_dir, transform=preprocess, target_transform=transform, mode='test')
     elif args.dataset == 'real_iad':
-        test_data = RealIADDataset_v2(root=dataset_dir, transform=preprocess, aug_rate=-1, target_transform=target_transform_b, target_transform_type = target_transform_type, mode='test')
+        test_data = RealIADDataset_v2(root=dataset_dir, transform=preprocess, aug_rate=-1, target_transform=transform, mode='test')
 
     test_dataloader = torch.utils.data.DataLoader(test_data, batch_size=1, shuffle=False)
     obj_list = test_data.get_cls_names()
@@ -166,16 +158,16 @@ def test(args):
 
     # few shot
     if args.mode == 'few_shot':
-        mem_features = memory_fs(args.model, model, obj_list, dataset_dir, save_path, preprocess, target_transform_b,
+        mem_features = memory_fs(args.model, model, obj_list, dataset_dir, save_path, preprocess, transform,
                               args.k_shot, few_shot_features, dataset_name, device)
 
     if args.mode == 'domain_adaption':
-        mem_features = memory_da(args.model, model, obj_list, dataset_dir, save_path, preprocess, target_transform_b,
+        mem_features = memory_da(args.model, model, obj_list, dataset_dir, save_path, preprocess, transform,
                              few_shot_features, dataset_name, device)
 
 
     # text prompt
-    with torch.amp.autocast('cuda'), torch.no_grad():
+    with torch.cuda.amp.autocast(), torch.no_grad():
         if args.dataset == 'mvtec':
             text_prompts = encode_text_with_prompt_ensemble_mvtec(model, obj_list, tokenizer, device)
         elif args.dataset == 'visa':
@@ -212,7 +204,7 @@ def test(args):
         #     cls_id.append(int(gt_defect[str(match.group(1))]))
         # class_ids.append(cls_id)
 
-        gt_mask = items['img_mask_b']
+        gt_mask = items['img_mask']
         
         for i in range(gt_mask.size(0)):
             gt_mask[i][gt_mask[i] > 0.5], gt_mask[i][gt_mask[i] <= 0.5] = 1, 0 
@@ -221,7 +213,7 @@ def test(args):
         results['imgs_masks'].append(gt_mask)  # px
         results['gt_sp'].append(items['anomaly'].item())
 
-        with torch.no_grad(), torch.amp.autocast('cuda'):
+        with torch.no_grad(), torch.cuda.amp.autocast():
             image_features, patch_tokens = model.encode_image(image, features_list)
             image_features /= image_features.norm(dim=-1, keepdim=True)
             text_features = []
