@@ -172,3 +172,5 @@ condaenv.*
 *.sh
 *.bsub
 
+debug*
+logs/*
