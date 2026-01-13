@@ -15,6 +15,7 @@ from torch.nn import functional as F
 import torch.backends.cudnn as cudnn
 import torchvision.transforms as transforms
 import logging
+from torchvision.transforms import InterpolationMode
 
 import open_clip
 from dataset import VisaDatasetV2, MVTecDataset, MPDDDataset, RealIADDataset_v2
@@ -63,10 +64,6 @@ def train(args):
         os.makedirs(save_path)
     txt_path = os.path.join(save_path, 'log.txt')  # log
 
-    # new ids for ground truth data split into specific defect category
-    # gt_defect = {'normal':0, 'bent':1, 'breakage down the middle':2, 'bubble':3, 'burnt':4, 'chip around edge and corner':5, 'chunk of gum missing':6, 'chunk of wax missing':7, 'color spot similar to the object':8, 'corner and edge breakage':2, 'corner missing':9, 'corner or edge breakage':2, 'damaged corner of packaging':10, 'different colour spot':8, 'discolor':8, 'melt':11, 'scratch':12, 'different color spot':8, 'middle breakage':2, 'missing':9, 'scratches':12, 'weird candle wick':13, 'damage':10, 'fryum stuck together':14, 'leak':15, 'similar colour spot':8, 'small chip around edge':5, 'extra wax in candle':7, 'extra':16, 'misshape':17, 'small cracks':18, 'small holes':19, 'foreign particals on candle':20, 'other':21, 'small scratches':13, 'wrong place':22, 'dirt':23, 'stuck together':15, 'wax melded out of the candle':7, 'same colour spot':8}
-    # gt_defect = {'normal':0, 'bent':1, 'breakage down the middle':2, 'bubble':3, 'burnt':4, 'chip around edge and corner':5, 'chunk of gum missing':6, 'chunk of wax missing':7, 'color spot similar to the object':8, 'corner and edge breakage':9, 'corner missing':10, 'corner or edge breakage':11, 'damaged corner of packaging':12, 'different colour spot':13, 'discolor':14, 'melt':15, 'scratch':16, 'different color spot':16, 'middle breakage':18, 'missing':19, 'scratches':20, 'weird candle wick':21, 'damage':22, 'fryum stuck together':23, 'leak':24, 'similar colour spot':25, 'small chip around edge':26, 'extra wax in candle':27, 'extra':28, 'misshape':29, 'small cracks':30, 'small holes':31, 'foreign particals on candle':32, 'other':33, 'small scratches':34, 'wrong place':35, 'dirt':36, 'stuck together':37, 'wax melded out of the candle':38, 'same colour spot':39}
-
     # model configs
     features_list = args.features_list
     with open(args.config_path, 'r') as f:
@@ -98,30 +95,28 @@ def train(args):
         logger.info(f'{arg}: {getattr(args, arg)}')
 
     # transforms
-    transform = transforms.Compose([
+    target_transform_b = transforms.Compose([
         transforms.Resize((image_size, image_size)),
         transforms.CenterCrop(image_size),
         transforms.ToTensor()
     ])
+    target_transform_type = transforms.Compose([
+        transforms.Resize((image_size, image_size), interpolation=InterpolationMode.NEAREST),
+        transforms.CenterCrop(image_size),
+        transforms.PILToTensor(),  # uint8 [1,H,W], values 0..K-1
+        transforms.Lambda(lambda x: x.squeeze(0).long()),  # [H,W] long
+    ])
+
 
     # datasets
     assert args.dataset in ['mvtec', 'visa', 'mpdd'] 
     if args.dataset == 'mvtec':
-        train_data = MVTecDataset(root=args.train_data_path, transform=preprocess, target_transform=transform,
+        train_data = MVTecDataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type, 
                                 aug_rate=args.aug_rate)
-        # gt_defect = {"good":0, "bent":1, "bent_lead":2, "bent_wire":3, "broken":4, "broken_large":5, "broken_small":6, "broken_teeth":7, "color":8, "combined":9, "contamination":10, "metal_contamination":11, "crack":12, "cut":13, "cut_inner_insulation":14, "cut_lead":15, "cut_outer_insulation":16, "fabric":17, "manipulated_front":18, "fabric_border":19, "fabric_interior":20, "faulty_imprint":21, "print":22, "glue":23, "glue_strip":24, "hole":25, "missing":26, "missing_wire":27, "missing_cable":28, "poke":29, "poke_insulation":30, "rough":31, "scratch":32, "scratch_head":33, "scratch_neck":34, "squeeze":35, "squeezed_teeth":36, "thread":37, "thread_side":38, "thread_top":39, "liquid":40, "oil":41, "misplaced":42, "cable_swap":43, "flip":44, "fold":45, "split_teeth":46, "damaged_case":47, "defective":48, "gray_stroke":49, "pill_type":50}
-        gt_defect = {"good":0, "bent":1, "bent_lead":1, "bent_wire":1, "manipulated_front":1, "broken":2, "broken_large":2, "broken_small":2, "broken_teeth":2, "color":3, "combined":4, "contamination":5, "metal_contamination":5, "crack":6, "cut":7, "cut_inner_insulation":7, "cut_lead":7, "cut_outer_insulation":7, "fabric":8, "fabric_border":8, "fabric_interior":8, "faulty_imprint":9, "print":9, "glue":10, "glue_strip":10, "hole":11, "missing":12, "missing_wire":12, "missing_cable":12, "poke":13, "poke_insulation":13, "rough":14, "scratch":15, "scratch_head":15, "scratch_neck":15, "squeeze":16, "squeezed_teeth":16, "thread":17, "thread_side":17, "thread_top":17, "liquid":18, "oil":18, "misplaced":19, "cable_swap":19, "flip":19, "fold":19, "split_teeth":19, "damaged_case":20, "defective":20, "gray_stroke":20, "pill_type":20}  
     elif args.dataset == 'visa':
-        train_data = VisaDatasetV2(root=args.train_data_path, transform=preprocess, target_transform=transform)
-        gt_defect = {'normal': 0, 'damage': 1, 'scratch':2, 'breakage': 3, 'burnt': 4, 'weird wick': 5, 'stuck': 6, 'crack': 7, 'wrong place': 8, 'partical': 9, 'bubble': 10, 'melded': 11, 'hole': 12, 'melt': 13, 'bent':14, 'spot': 15, 'extra': 16, 'chip': 17, 'missing': 18}
+        train_data = VisaDatasetV2(root=args.train_data_path, transform=preprocess, target_transform_b=target_transform_b,target_transform_type = target_transform_type)
     elif args.dataset == 'mpdd':
-        train_data =  MPDDDataset(root=args.train_data_path, transform=preprocess, target_transform=transform, aug_rate=args.aug_rate)
-        gt_defect =  {"good":0, 'hole':1, 'scratches':2, 'bend_and_parts_mismatch':3, 'parts_mismatch':4, 'defective_painting':5, 'major_rust':6, 'total_rust':6, 'flattening':7}
-    elif args.dataset == 'real_iad':
-        test_data = RealIADDataset_v2(root=args.train_data_path, transform=preprocess, aug_rate=-1, target_transform=transform, mode='test')
-        gt_defect =  {"good":0, 'pit':1, 'deformation':2, 'abrasion':3, 'scratch':4, 'damage':5, 'missing':6, 'foreign':7, 'contamination':8}
-        
-        
+        train_data =  MPDDDataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform_b, aug_rate=args.aug_rate)
 
 
     train_dataloader = torch.utils.data.DataLoader(train_data, batch_size=batch_size, shuffle=True)
@@ -138,7 +133,7 @@ def train(args):
     loss_dice_m = DiceLoss(from_logits=False) #DiceLoss()
 
     # text prompt
-    with torch.cuda.amp.autocast(), torch.no_grad():
+    with torch.amp.autocast('cuda'), torch.no_grad():
         obj_list = train_data.get_cls_names()
         if args.dataset == 'mvtec':
             text_prompts = encode_text_with_prompt_ensemble_mvtec(model, obj_list, tokenizer, device)
@@ -157,20 +152,22 @@ def train(args):
             idx += 1
             image = items['img'].to(device)
             paths = items['img_path']
-            cls_name = items['cls_name']
+            cls_name = items['cls_name'] 
+            img_mask = items["img_mask"].to(device, non_blocking=True).long()        # [B,H,W], values: 0..C-1
+            img_mask_b = items["img_mask_b"].to(device, non_blocking=True).float()   # [B,H,W], values: 0/1
 
             # new GT data
-            if args.dataset == 'mvtec' or args.dataset == 'mpdd':
-                cls_id = []               
-                for i in paths:
-                    match = re.search(r'\/([^\/]+)\/[^\/]*$', i) # './data/mvtec/transistor/test/good/004.png', './data/mvtec/carpet/test/hole/002.png', './data/mvtec/metal_nut/test/scratch/004.png',
-                    cls_id.append(int(gt_defect[str(match.group(1))]))
-            elif args.dataset == 'visa':
-                defect_cls = items['defect_cls']
-                cls_id = [gt_defect[name] for name in defect_cls]
+            # if args.dataset == 'mvtec' or args.dataset == 'mpdd':
+            #     cls_id = []               
+            #     for i in paths:
+            #         match = re.search(r'\/([^\/]+)\/[^\/]*$', i) # './data/mvtec/transistor/test/good/004.png', './data/mvtec/carpet/test/hole/002.png', './data/mvtec/metal_nut/test/scratch/004.png',
+            #         cls_id.append(int(gt_defect[str(match.group(1))]))
+            # elif args.dataset == 'visa':
+            #     defect_cls = items['defect_cls']
+            #     cls_id = [gt_defect[name] for name in defect_cls]
 
 
-            with torch.cuda.amp.autocast():
+            with torch.amp.autocast('cuda'):
                 with torch.no_grad():
                     image_features, patch_tokens = model.encode_image(image, features_list)
 
@@ -196,18 +193,20 @@ def train(args):
                     anomaly_map = torch.softmax(anomaly_map, dim=1)
                     anomaly_maps.append(anomaly_map)
 
-            # losses
-            gt = items['img_mask'].to(device) # B, H, W
-            gt_b = gt.clone()
-            for i in range(gt.size(0)):
-                gt[i][gt[i] > 0.5], gt[i][gt[i] <= 0.5] = cls_id[i], 0 #cls_id[i], 0
-                gt_b[i][gt_b[i] > 0.5], gt_b[i][gt_b[i] <= 0.5] = 1, 0 #cls_id[i], 0
+            
+            # gt = items['img_mask'].to(device) # B, H, W
+            # gt_b = gt.clone()
+            # for i in range(gt.size(0)):
+            #     gt[i][gt[i] > 0.5], gt[i][gt[i] <= 0.5] = cls_id[i], 0 #cls_id[i], 0
+            #     gt_b[i][gt_b[i] > 0.5], gt_b[i][gt_b[i] <= 0.5] = 1, 0 #cls_id[i], 0
 
-            gt = gt.long()
+            # gt = gt.long()
+
+            # losses
             loss = 0
             for num in range(len(anomaly_maps)):              
-                loss += loss_focal(anomaly_maps[num], gt) # a->xyz b->abc 21, 518,518
-                loss += loss_dice(torch.sum(anomaly_maps[num][:, 1:, :, :], dim=1), gt_b)
+                loss += loss_focal(anomaly_maps[num], img_mask) # a->xyz b->abc 21, 518,518
+                loss += loss_dice(torch.sum(anomaly_maps[num][:, 1:, :, :], dim=1), img_mask_b)
 
             optimizer.zero_grad()
             loss.backward()
