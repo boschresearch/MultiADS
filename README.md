@@ -23,6 +23,7 @@ We present MultiADS, the first framework that goes beyond binary “good/bad” 
 
 
 ## News
+- 01/22/2026: The code base of DAPO is now available [here](https://github.com/boschresearch/defect-aware-prompt-optimization). 
 - 12/07/2025: The extension of MultiADS, Defect-aware Hybrid Prompt Optimization (DAPO), is now available at [here](https://www.arxiv.org/abs/2512.09446). The code base will be released [here](https://github.com/boschresearch/defect-aware-prompt-optimization).
 - 06/25/2025: MultiADS has already been accepted by ICCV2025.
 
