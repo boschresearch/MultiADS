@@ -25,11 +25,9 @@ from prompts.prompt_ensemble_mvtec_20cls import encode_text_with_prompt_ensemble
 from prompts.prompt_ensemble_visa_19cls import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_visa
 from prompts.new_prompt_ensemble_mpdd import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mpdd
 from prompts.prompt_ensemble_real_IAD_simple import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_real_iad
-import re
 from tqdm import tqdm
 import csv
 
-import segmentation_models_pytorch as smp
 from loss import DiceLoss
 
 import pdb
@@ -193,20 +191,15 @@ def train(args):
                     anomaly_map = torch.softmax(anomaly_map, dim=1)
                     anomaly_maps.append(anomaly_map)
 
-            
-            # gt = items['img_mask'].to(device) # B, H, W
-            # gt_b = gt.clone()
-            # for i in range(gt.size(0)):
-            #     gt[i][gt[i] > 0.5], gt[i][gt[i] <= 0.5] = cls_id[i], 0 #cls_id[i], 0
-            #     gt_b[i][gt_b[i] > 0.5], gt_b[i][gt_b[i] <= 0.5] = 1, 0 #cls_id[i], 0
-
-            # gt = gt.long()
 
             # losses
-            loss = 0
+            loss = 0.0
             for num in range(len(anomaly_maps)):              
                 loss += loss_focal(anomaly_maps[num], img_mask) # a->xyz b->abc 21, 518,518
                 loss += loss_dice(torch.sum(anomaly_maps[num][:, 1:, :, :], dim=1), img_mask_b)
+                loss /= 2.0
+            
+            loss /= len(anomaly_maps)
 
             optimizer.zero_grad()
             loss.backward()
@@ -236,7 +229,7 @@ if __name__ == '__main__':
     # hyper-parameter
     parser.add_argument("--epoch", type=int, default=10, help="epochs")
     parser.add_argument("--learning_rate", type=float, default=0.001, help="learning rate")
-    parser.add_argument("--batch_size", type=int, default=8, help="batch size")
+    parser.add_argument("--batch_size", type=int, default=4, help="batch size")
     parser.add_argument("--image_size", type=int, default=518, help="image size")
     parser.add_argument("--aug_rate", type=float, default=0.2, help="image size")
     parser.add_argument("--print_freq", type=int, default=1, help="print frequency")
@@ -244,8 +237,6 @@ if __name__ == '__main__':
     parser.add_argument("--seed", type=int, default=42, help="random seed")
     args = parser.parse_args()
 
-    # setup_seed(111)
     setup_seed(args.seed)
-    #setup_seed(100)
     train(args) 
 
