@@ -24,11 +24,9 @@ from prompts.prompt_ensemble_mvtec_20cls import encode_text_with_prompt_ensemble
 from prompts.prompt_ensemble_visa_19cls import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_visa
 from prompts.new_prompt_ensemble_mpdd import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mpdd
 from prompts.prompt_ensemble_real_IAD_simple import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_real_iad
-import re
 from tqdm import tqdm
 import csv
 
-import segmentation_models_pytorch as smp
 from loss import DiceLoss
 
 import pdb
@@ -237,7 +235,7 @@ if __name__ == '__main__':
     # hyper-parameter
     parser.add_argument("--epoch", type=int, default=10, help="epochs")
     parser.add_argument("--learning_rate", type=float, default=0.001, help="learning rate")
-    parser.add_argument("--batch_size", type=int, default=8, help="batch size")
+    parser.add_argument("--batch_size", type=int, default=4, help="batch size")
     parser.add_argument("--image_size", type=int, default=518, help="image size")
     parser.add_argument("--aug_rate", type=float, default=0.2, help="image size")
     parser.add_argument("--print_freq", type=int, default=1, help="print frequency")
@@ -245,8 +243,6 @@ if __name__ == '__main__':
     parser.add_argument("--seed", type=int, default=42, help="random seed")
     args = parser.parse_args()
 
-    # setup_seed(111)
     setup_seed(args.seed)
-    #setup_seed(100)
     train(args) 
 

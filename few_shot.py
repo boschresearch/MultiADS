@@ -4,19 +4,22 @@
 import torch
 from dataset import VisaDataset, MVTecDataset, MPDDDataset, MADDataset, RealIADDataset_v2
 
-def memory(model_name, model, obj_list, dataset_dir, save_path, preprocess, transform, k_shot,
+def memory(model_name, model, obj_list, dataset_dir, save_path, preprocess, transform, transform_type, k_shot,
            few_shot_features, dataset_name, device):
     mem_features = {}
     for obj in obj_list:
         if dataset_name == 'mvtec':
-            data = MVTecDataset(root=dataset_dir, transform=preprocess, target_transform=transform,
-                                aug_rate=-1, mode='train', k_shot=k_shot, save_dir=save_path, obj_name=obj)
+            data = MVTecDataset(root=dataset_dir, transform=preprocess, target_transform=transform,         
+                                target_transform_type=transform_type, aug_rate=-1, mode='train', k_shot=k_shot, 
+                                save_dir=save_path, obj_name=obj)
         elif dataset_name == 'visa':
             data = VisaDataset(root=dataset_dir, transform=preprocess, target_transform=transform,
+                               target_transform_type=transform_type, 
                                mode='train', k_shot=k_shot, save_dir=save_path, obj_name=obj)
         elif dataset_name == 'mpdd':
             data = MPDDDataset(root=dataset_dir, transform=preprocess, target_transform=transform,
-                                aug_rate=-1, mode='train', k_shot=k_shot, save_dir=save_path, obj_name=obj)
+                               target_transform_type=transform_type,
+                                mode='train', k_shot=k_shot, save_dir=save_path, obj_name=obj)
         elif dataset_name == 'mad_sim' or dataset_name == 'mad_real':
             data = MADDataset(root=dataset_dir, transform=preprocess, target_transform=transform, mode='train', k_shot=k_shot, save_dir=save_path, obj_name=obj)
         elif dataset_name == 'real_iad':

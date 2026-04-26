@@ -20,7 +20,7 @@ import open_clip
 from domain_adaption import memory as memory_da
 from few_shot import memory as memory_fs
 from model import LinearLayer
-from dataset import VisaDataset, MVTecDataset, MPDDDataset, MADDataset, RealIADDataset_v2
+from dataset import VisaDataset, VisaDatasetTest, MVTecDataset, MPDDDataset, MADDataset, RealIADDataset_v2
 from prompts.prompt_ensemble_visa_19cls_test import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_visa
 from prompts.prompt_ensemble_mvtec_20cls import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mvtec
 from prompts.new_prompt_ensemble_mpdd import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mpdd
@@ -34,54 +34,146 @@ import pdb
 
 
 def setup_seed(seed):
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    np.random.seed(seed)
-    random.seed(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
+	torch.manual_seed(seed)
+	torch.cuda.manual_seed_all(seed)
+	np.random.seed(seed)
+	random.seed(seed)
+	torch.backends.cudnn.deterministic = True
+	torch.backends.cudnn.benchmark = False
 
 
 def normalize(pred, max_value=None, min_value=None):
-    if max_value is None or min_value is None:
-        return (pred - pred.min()) / (pred.max() - pred.min())
-    else:
-        return (pred - min_value) / (max_value - min_value)
+	if max_value is None or min_value is None:
+		den = pred.max() - pred.min()
+		if den < 1e-12:
+			return np.zeros_like(pred)
+		return (pred - pred.min()) / den
+	else:
+		den = max_value - min_value
+		if den < 1e-12:
+			return np.zeros_like(pred)
+		return (pred - min_value) / den
 
 
 def apply_ad_scoremap(image, scoremap, alpha=0.5):
-    np_image = np.asarray(image, dtype=float)
-    scoremap = (scoremap * 255).astype(np.uint8)
-    scoremap = cv2.applyColorMap(scoremap, cv2.COLORMAP_JET)
-    scoremap = cv2.cvtColor(scoremap, cv2.COLOR_BGR2RGB)
-    return (alpha * np_image + (1 - alpha) * scoremap).astype(np.uint8)
+	np_image = np.asarray(image, dtype=float)
+	scoremap = (scoremap * 255).astype(np.uint8)
+	scoremap = cv2.applyColorMap(scoremap, cv2.COLORMAP_JET)
+	scoremap = cv2.cvtColor(scoremap, cv2.COLOR_BGR2RGB)
+	return (alpha * np_image + (1 - alpha) * scoremap).astype(np.uint8)
 
 
 def cal_pro_score(masks, amaps, max_step=200, expect_fpr=0.3):
-    # ref: https://github.com/gudovskiy/cflow-ad/blob/master/train.py
-    binary_amaps = np.zeros_like(amaps, dtype=bool)
-    min_th, max_th = amaps.min(), amaps.max()
-    delta = (max_th - min_th) / max_step
-    pros, fprs, ths = [], [], []
-    for th in np.arange(min_th, max_th, delta):
-        binary_amaps[amaps <= th], binary_amaps[amaps > th] = 0, 1
-        pro = []
-        for binary_amap, mask in zip(binary_amaps, masks):
-            for region in measure.regionprops(measure.label(mask)):
-                tp_pixels = binary_amap[region.coords[:, 0], region.coords[:, 1]].sum()
-                pro.append(tp_pixels / region.area)
-        inverse_masks = 1 - masks
-        fp_pixels = np.logical_and(inverse_masks, binary_amaps).sum()
-        fpr = fp_pixels / inverse_masks.sum()
-        pros.append(np.array(pro).mean())
-        fprs.append(fpr)
-        ths.append(th)
-    pros, fprs, ths = np.array(pros), np.array(fprs), np.array(ths)
-    idxes = fprs < expect_fpr
-    fprs = fprs[idxes]
-    fprs = (fprs - fprs.min()) / (fprs.max() - fprs.min())
-    pro_auc = auc(fprs, pros[idxes])
-    return pro_auc
+	# ref: https://github.com/gudovskiy/cflow-ad/blob/master/train.py
+	binary_amaps = np.zeros_like(amaps, dtype=bool)
+	min_th, max_th = amaps.min(), amaps.max()
+	if abs(max_th - min_th) < 1e-12:
+		return 0.0
+
+	delta = (max_th - min_th) / max_step
+	pros, fprs, ths = [], [], []
+	for th in np.arange(min_th, max_th, delta):
+		binary_amaps[amaps <= th], binary_amaps[amaps > th] = 0, 1
+		pro = []
+		for binary_amap, mask in zip(binary_amaps, masks):
+			for region in measure.regionprops(measure.label(mask)):
+				tp_pixels = binary_amap[region.coords[:, 0], region.coords[:, 1]].sum()
+				pro.append(tp_pixels / region.area)
+		inverse_masks = 1 - masks
+		fp_pixels = np.logical_and(inverse_masks, binary_amaps).sum()
+		den = inverse_masks.sum()
+		fpr = fp_pixels / den if den > 0 else 0.0
+		pros.append(np.array(pro).mean() if len(pro) > 0 else 0.0)
+		fprs.append(fpr)
+		ths.append(th)
+
+	pros, fprs, ths = np.array(pros), np.array(fprs), np.array(ths)
+	idxes = fprs < expect_fpr
+	if idxes.sum() < 2:
+		return 0.0
+
+	fprs = fprs[idxes]
+	pros = pros[idxes]
+
+	den = fprs.max() - fprs.min()
+	if den < 1e-12:
+		return 0.0
+
+	fprs = (fprs - fprs.min()) / den
+	pro_auc = auc(fprs, pros)
+	return pro_auc
+
+
+def evaluate_one_object(obj, results):
+	table = []
+	gt_px = []
+	pr_px = []
+	gt_sp = []
+	pr_sp = []
+	pr_sp_tmp = []
+	table.append(obj)
+
+	for idxes in range(len(results['cls_names'])):
+		if results['cls_names'][idxes] == obj:
+			gt_px.append(results['imgs_masks'][idxes].squeeze(1).numpy())
+			pr_px.append(results['anomaly_maps'][idxes])
+			pr_sp_tmp.append(np.mean(np.partition(results['anomaly_maps'][idxes].reshape(-1), -3)[-3:]))
+			gt_sp.append(results['gt_sp'][idxes])
+			pr_sp.append(results['pr_sp'][idxes])
+
+	gt_px = np.array(gt_px)
+	gt_sp = np.array(gt_sp)
+	pr_px = np.array(pr_px)
+	pr_sp = np.array(pr_sp)
+
+	pr_sp_tmp = np.array(pr_sp_tmp)
+	if len(pr_sp_tmp) > 0:
+		den = pr_sp_tmp.max() - pr_sp_tmp.min()
+		pr_sp_tmp = (pr_sp_tmp - pr_sp_tmp.min()) / den if den > 1e-12 else np.zeros_like(pr_sp_tmp)
+	else:
+		pr_sp_tmp = np.zeros_like(pr_sp)
+
+	# keep your current logic
+	pr_sp = pr_sp_tmp
+
+	auroc_px = roc_auc_score(gt_px.ravel(), pr_px.ravel())
+	auroc_sp = roc_auc_score(gt_sp, pr_sp)
+	ap_sp = average_precision_score(gt_sp, pr_sp)
+	ap_px = average_precision_score(gt_px.ravel(), pr_px.ravel())
+
+	precisions, recalls, thresholds = precision_recall_curve(gt_sp, pr_sp)
+	f1_scores = (2 * precisions * recalls) / (precisions + recalls + 1e-12)
+	f1_sp = np.max(f1_scores[np.isfinite(f1_scores)])
+
+	precisions, recalls, thresholds = precision_recall_curve(gt_px.ravel(), pr_px.ravel())
+	f1_scores = (2 * precisions * recalls) / (precisions + recalls + 1e-12)
+	f1_px = np.max(f1_scores[np.isfinite(f1_scores)])
+
+	if len(gt_px.shape) == 4:
+		gt_px = gt_px.squeeze(1)
+	if len(pr_px.shape) == 4:
+		pr_px = pr_px.squeeze(1)
+	aupro = cal_pro_score(gt_px, pr_px)
+
+	table.append(str(np.round(auroc_px * 100, decimals=1)))
+	table.append(str(np.round(f1_px * 100, decimals=1)))
+	table.append(str(np.round(ap_px * 100, decimals=1)))
+	table.append(str(np.round(aupro * 100, decimals=1)))
+	table.append(str(np.round(auroc_sp * 100, decimals=1)))
+	table.append(str(np.round(f1_sp * 100, decimals=1)))
+	table.append(str(np.round(ap_sp * 100, decimals=1)))
+
+	return {
+		"obj": obj,
+		"table": table,
+		"auroc_sp": auroc_sp,
+		"auroc_px": auroc_px,
+		"f1_sp": f1_sp,
+		"f1_px": f1_px,
+		"aupro": aupro,
+		"ap_sp": ap_sp,
+		"ap_px": ap_px,
+	}
 
 
 def test(args):
@@ -389,27 +481,28 @@ def test(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser("MultiADS", add_help=True)
-    # paths
-    parser.add_argument("--data_path", type=str, default="./data/visa", help="path to test dataset")
-    parser.add_argument("--save_path", type=str, default='./results/visa/zero_shot/', help='path to save results')
-    parser.add_argument("--checkpoint_path", type=str, default='./exps/mvtec/epoch_1.pth', help='path to save results')
-    parser.add_argument("--config_path", type=str, default='./open_clip/model_configs/ViT-L-14-336.json', help="model configs")
-    # model
-    parser.add_argument("--dataset", type=str, default='mvtec', help="test dataset")
-    parser.add_argument("--model", type=str, default="ViT-L-14-336", help="model used")
-    parser.add_argument("--pretrained", type=str, default="openai", help="pretrained weight used")
-    parser.add_argument("--features_list", type=int, nargs="+", default=[6, 12, 18, 24], help="features used")
-    parser.add_argument("--few_shot_features", type=int, nargs="+", default=[6, 12, 18, 24], help="features used for few shot")
-    parser.add_argument("--image_size", type=int, default=518, help="image size")
-    parser.add_argument("--mode", type=str, default="zero_shot", help="zero shot or few shot or domain adaption")
-    # few shot
-    parser.add_argument("--k_shot", type=int, default=10, help="e.g., 10-shot, 5-shot, 1-shot")
-    # domain adaption
-    parser.add_argument("--quantile", type=float, default=0.0001, help="percent of the qunatile of nearest neighbour")
-    
-    parser.add_argument("--seed", type=int, default=42, help="random seed")
-    args = parser.parse_args()
+	parser = argparse.ArgumentParser("MultiADS", add_help=True)
+	# paths
+	parser.add_argument("--data_path", type=str, default="./data/visa", help="path to test dataset")
+	parser.add_argument("--save_path", type=str, default='./results/visa/zero_shot/', help='path to save results')
+	parser.add_argument("--checkpoint_path", type=str, default='./exps/mvtec/epoch_1.pth', help='path to save results')
+	parser.add_argument("--config_path", type=str, default='./open_clip/model_configs/ViT-L-14-336.json', help="model configs")
+	# model
+	parser.add_argument("--dataset", type=str, default='visa', help="test dataset")
+	parser.add_argument("--model", type=str, default="ViT-L-14-336", help="model used")
+	parser.add_argument("--pretrained", type=str, default="openai", help="pretrained weight used")
+	parser.add_argument("--features_list", type=int, nargs="+", default=[6, 12, 18, 24], help="features used")
+	parser.add_argument("--few_shot_features", type=int, nargs="+", default=[6, 12, 18, 24], help="features used for few shot")
+	parser.add_argument("--image_size", type=int, default=518, help="image size")
+	parser.add_argument("--mode", type=str, default="zero_shot", help="zero shot or few shot or domain adaption")
+	# few shot
+	parser.add_argument("--k_shot", type=int, default=10, help="e.g., 10-shot, 5-shot, 1-shot")
+	# domain adaption
+	parser.add_argument("--quantile", type=float, default=0.0001, help="percent of the qunatile of nearest neighbour")
 
-    setup_seed(args.seed)
-    test(args)
+	parser.add_argument("--seed", type=int, default=42, help="random seed")
+	parser.add_argument('--visualization', action='store_true')
+	args = parser.parse_args()
+
+	setup_seed(args.seed)
+	test(args)

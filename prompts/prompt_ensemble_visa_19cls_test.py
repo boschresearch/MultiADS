@@ -3,7 +3,6 @@
 
 import os
 from typing import Union, List
-from pkg_resources import packaging
 import torch
 import numpy as np
 

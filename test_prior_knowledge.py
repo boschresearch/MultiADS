@@ -9,399 +9,612 @@ import random
 import logging
 import argparse
 import numpy as np
-from PIL import Image
 from skimage import measure
 from tabulate import tabulate
 import torch.nn.functional as F
 import torchvision.transforms as transforms
-from sklearn.metrics import auc, roc_auc_score, average_precision_score, f1_score, precision_recall_curve, pairwise
+from sklearn.metrics import auc, roc_auc_score, average_precision_score, precision_recall_curve, pairwise
+from torchvision.transforms import InterpolationMode
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 import open_clip
-from few_shot import memory
+from few_shot import memory as memory_fs
+from domain_adaption import memory as memory_da
 from model import LinearLayer
-from dataset import VisaDataset, MVTecDataset, MPDDDataset, RealIADDataset_v2, MADDataset
-from prompts.prompt_ensemble_visa_19cls_test import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_visa
-from prompts.prompt_ensemble_visa_19cls_test import product_type2defect_type as product_type2defect_type_visa
-from prompts.prompt_ensemble_mvtec_20cls import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mvtec
-from prompts.prompt_ensemble_mvtec_20cls import product_type2defect_type as product_type2defect_type_mvtec
-from prompts.new_prompt_ensemble_mpdd import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mpdd
-from prompts.new_prompt_ensemble_mpdd import product_type2defect_type as product_type2defect_type_mpdd
-from prompts.prompt_ensemble_mad_real import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mad_real
-from prompts.prompt_ensemble_mad_real import product_type2defect_type as  product_type2defect_type_mad_real
-from prompts.prompt_ensemble_mad_sim import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mad_sim
-from prompts.prompt_ensemble_mad_sim import product_type2defect_type as product_type2defect_type_mad_sim
-from prompts.prompt_ensemble_real_IAD import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_real_iad
-from prompts.prompt_ensemble_real_IAD import product_type2defect_type as product_type2defect_type_real_iad
+from dataset import VisaDatasetTest, MVTecDataset, MPDDDataset, RealIADDataset_v2, MADDataset
 
-import re
+from prompts.prompt_ensemble_visa_19cls_test import (
+	encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_visa,
+	product_type2defect_type as product_type2defect_type_visa,
+)
+from prompts.prompt_ensemble_mvtec_20cls import (
+	encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mvtec,
+	product_type2defect_type as product_type2defect_type_mvtec,
+)
+from prompts.new_prompt_ensemble_mpdd import (
+	encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mpdd,
+	product_type2defect_type as product_type2defect_type_mpdd,
+)
+from prompts.prompt_ensemble_mad_real import (
+	encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mad_real,
+	product_type2defect_type as product_type2defect_type_mad_real,
+)
+from prompts.prompt_ensemble_mad_sim import (
+	encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mad_sim,
+	product_type2defect_type as product_type2defect_type_mad_sim,
+)
+from prompts.prompt_ensemble_real_IAD import (
+	encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_real_iad,
+	product_type2defect_type as product_type2defect_type_real_iad,
+)
+
 from tqdm import tqdm
-
-import pdb
 
 
 def setup_seed(seed):
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    np.random.seed(seed)
-    random.seed(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
+	torch.manual_seed(seed)
+	torch.cuda.manual_seed_all(seed)
+	np.random.seed(seed)
+	random.seed(seed)
+	torch.backends.cudnn.deterministic = True
+	torch.backends.cudnn.benchmark = False
 
 
 def normalize(pred, max_value=None, min_value=None):
-    if max_value is None or min_value is None:
-        return (pred - pred.min()) / (pred.max() - pred.min())
-    else:
-        return (pred - min_value) / (max_value - min_value)
+	if max_value is None or min_value is None:
+		den = pred.max() - pred.min()
+		if den < 1e-12:
+			return np.zeros_like(pred)
+		return (pred - pred.min()) / den
+	else:
+		den = max_value - min_value
+		if den < 1e-12:
+			return np.zeros_like(pred)
+		return (pred - min_value) / den
 
 
 def apply_ad_scoremap(image, scoremap, alpha=0.5):
-    np_image = np.asarray(image, dtype=float)
-    scoremap = (scoremap * 255).astype(np.uint8)
-    scoremap = cv2.applyColorMap(scoremap, cv2.COLORMAP_JET)
-    scoremap = cv2.cvtColor(scoremap, cv2.COLOR_BGR2RGB)
-    return (alpha * np_image + (1 - alpha) * scoremap).astype(np.uint8)
+	np_image = np.asarray(image, dtype=float)
+	scoremap = (scoremap * 255).astype(np.uint8)
+	scoremap = cv2.applyColorMap(scoremap, cv2.COLORMAP_JET)
+	scoremap = cv2.cvtColor(scoremap, cv2.COLOR_BGR2RGB)
+	return (alpha * np_image + (1 - alpha) * scoremap).astype(np.uint8)
 
 
 def cal_pro_score(masks, amaps, max_step=200, expect_fpr=0.3):
-    # ref: https://github.com/gudovskiy/cflow-ad/blob/master/train.py
-    binary_amaps = np.zeros_like(amaps, dtype=bool)
-    min_th, max_th = amaps.min(), amaps.max()
-    delta = (max_th - min_th) / max_step
-    pros, fprs, ths = [], [], []
-    for th in np.arange(min_th, max_th, delta):
-        binary_amaps[amaps <= th], binary_amaps[amaps > th] = 0, 1
-        pro = []
-        for binary_amap, mask in zip(binary_amaps, masks):
-            for region in measure.regionprops(measure.label(mask)):
-                tp_pixels = binary_amap[region.coords[:, 0], region.coords[:, 1]].sum()
-                pro.append(tp_pixels / region.area)
-        inverse_masks = 1 - masks
-        fp_pixels = np.logical_and(inverse_masks, binary_amaps).sum()
-        fpr = fp_pixels / inverse_masks.sum()
-        pros.append(np.array(pro).mean())
-        fprs.append(fpr)
-        ths.append(th)
-    pros, fprs, ths = np.array(pros), np.array(fprs), np.array(ths)
-    idxes = fprs < expect_fpr
-    fprs = fprs[idxes]
-    fprs = (fprs - fprs.min()) / (fprs.max() - fprs.min())
-    pro_auc = auc(fprs, pros[idxes])
-    return pro_auc
+	binary_amaps = np.zeros_like(amaps, dtype=bool)
+	min_th, max_th = amaps.min(), amaps.max()
+	if abs(max_th - min_th) < 1e-12:
+		return 0.0
+
+	delta = (max_th - min_th) / max_step
+	pros, fprs = [], []
+
+	for th in np.arange(min_th, max_th, delta):
+		binary_amaps[amaps <= th], binary_amaps[amaps > th] = 0, 1
+		pro = []
+		for binary_amap, mask in zip(binary_amaps, masks):
+			for region in measure.regionprops(measure.label(mask)):
+				tp_pixels = binary_amap[region.coords[:, 0], region.coords[:, 1]].sum()
+				pro.append(tp_pixels / region.area)
+
+		inverse_masks = 1 - masks
+		fp_pixels = np.logical_and(inverse_masks, binary_amaps).sum()
+		fpr = fp_pixels / max(inverse_masks.sum(), 1)
+
+		pros.append(np.array(pro).mean() if len(pro) > 0 else 0.0)
+		fprs.append(fpr)
+
+	pros = np.array(pros)
+	fprs = np.array(fprs)
+
+	idxes = fprs < expect_fpr
+	if idxes.sum() < 2:
+		return 0.0
+
+	fprs = fprs[idxes]
+	pros = pros[idxes]
+
+	den = fprs.max() - fprs.min()
+	if den < 1e-12:
+		return 0.0
+
+	fprs = (fprs - fprs.min()) / den
+	return auc(fprs, pros)
+
+
+def evaluate_one_object(obj, cls_names, imgs_masks, anomaly_maps, gt_sp_list, pr_sp_list):
+	table = [obj]
+
+	gt_px = []
+	pr_px = []
+	gt_sp = []
+	pr_sp = []
+	pr_sp_tmp = []
+
+	for idx in range(len(cls_names)):
+		if cls_names[idx] == obj:
+			mask = np.asarray(imgs_masks[idx])
+			mask = np.squeeze(mask)
+			gt_px.append(mask)
+			pr_px.append(anomaly_maps[idx])
+			pr_sp_tmp.append(np.max(anomaly_maps[idx]))
+			gt_sp.append(gt_sp_list[idx])
+			pr_sp.append(pr_sp_list[idx])
+
+	gt_px = np.array(gt_px)
+	pr_px = np.array(pr_px)
+	gt_sp = np.array(gt_sp)
+	pr_sp = np.array(pr_sp)
+
+	pr_sp_tmp = np.array(pr_sp_tmp)
+	if len(pr_sp_tmp) > 0:
+		den = pr_sp_tmp.max() - pr_sp_tmp.min()
+		pr_sp_tmp = (pr_sp_tmp - pr_sp_tmp.min()) / den if den > 1e-12 else np.zeros_like(pr_sp_tmp)
+	else:
+		pr_sp_tmp = np.zeros_like(pr_sp)
+
+	pr_sp = 0.5 * (pr_sp + pr_sp_tmp)
+
+	auroc_px = roc_auc_score(gt_px.ravel(), pr_px.ravel())
+	auroc_sp = roc_auc_score(gt_sp, pr_sp)
+	ap_sp = average_precision_score(gt_sp, pr_sp)
+	ap_px = average_precision_score(gt_px.ravel(), pr_px.ravel())
+
+	precisions, recalls, _ = precision_recall_curve(gt_sp, pr_sp)
+	f1_scores = (2 * precisions * recalls) / (precisions + recalls + 1e-12)
+	f1_sp = np.max(f1_scores[np.isfinite(f1_scores)])
+
+	precisions, recalls, _ = precision_recall_curve(gt_px.ravel(), pr_px.ravel())
+	f1_scores = (2 * precisions * recalls) / (precisions + recalls + 1e-12)
+	f1_px = np.max(f1_scores[np.isfinite(f1_scores)])
+
+	if len(gt_px.shape) == 4:
+		gt_px = gt_px.squeeze(1)
+	if len(pr_px.shape) == 4:
+		pr_px = pr_px.squeeze(1)
+
+	aupro = cal_pro_score(gt_px, pr_px)
+
+	table.append(str(np.round(auroc_px * 100, decimals=1)))
+	table.append(str(np.round(f1_px * 100, decimals=1)))
+	table.append(str(np.round(ap_px * 100, decimals=1)))
+	table.append(str(np.round(aupro * 100, decimals=1)))
+	table.append(str(np.round(auroc_sp * 100, decimals=1)))
+	table.append(str(np.round(f1_sp * 100, decimals=1)))
+	table.append(str(np.round(ap_sp * 100, decimals=1)))
+
+	return {
+		"obj": obj,
+		"table": table,
+		"auroc_sp": auroc_sp,
+		"auroc_px": auroc_px,
+		"f1_sp": f1_sp,
+		"f1_px": f1_px,
+		"aupro": aupro,
+		"ap_sp": ap_sp,
+		"ap_px": ap_px,
+	}
 
 
 def test(args):
-    img_size = args.image_size
-    features_list = args.features_list
-    few_shot_features = args.few_shot_features
-    dataset_dir = args.data_path
-    save_path = args.save_path
-    dataset_name = args.dataset
-    if not os.path.exists(save_path):
-        os.makedirs(save_path)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    txt_path = os.path.join(save_path, 'log.txt')
+	img_size = args.image_size
+	features_list = args.features_list
+	few_shot_features = args.few_shot_features
+	dataset_dir = args.data_path
+	save_path = args.save_path
+	dataset_name = args.dataset
 
+	os.makedirs(save_path, exist_ok=True)
+	device = "cuda" if torch.cuda.is_available() else "cpu"
+	txt_path = os.path.join(save_path, 'log.txt')
 
+	# clip
+	model, _, preprocess = open_clip.create_model_and_transforms(
+		args.model, img_size, pretrained=args.pretrained
+	)
+	model.to(device)
+	model.eval()
+	tokenizer = open_clip.get_tokenizer(args.model)
 
-    # clip
-    model, _, preprocess = open_clip.create_model_and_transforms(args.model, img_size, pretrained=args.pretrained)
-    model.to(device)
-    tokenizer = open_clip.get_tokenizer(args.model)
+	# logger
+	root_logger = logging.getLogger()
+	for handler in root_logger.handlers[:]:
+		root_logger.removeHandler(handler)
+	root_logger.setLevel(logging.WARNING)
 
-    # logger
-    root_logger = logging.getLogger()
-    for handler in root_logger.handlers[:]:
-        root_logger.removeHandler(handler)
-    root_logger.setLevel(logging.WARNING)
-    logger = logging.getLogger('test')
-    formatter = logging.Formatter('%(asctime)s.%(msecs)03d - %(levelname)s: %(message)s',
-                                  datefmt='%y-%m-%d %H:%M:%S')
-    logger.setLevel(logging.INFO)
-    file_handler = logging.FileHandler(txt_path, mode='a')
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(formatter)
-    logger.addHandler(console_handler)
+	logger = logging.getLogger('test')
+	logger.handlers.clear()
+	logger.setLevel(logging.INFO)
+	logger.propagate = False
 
-    # record parameters
-    for arg in vars(args):
-        if args.mode == 'zero_shot' and (arg == 'k_shot' or arg == 'few_shot_features'):
-            continue
-        logger.info(f'{arg}: {getattr(args, arg)}')
+	formatter = logging.Formatter(
+		'%(asctime)s.%(msecs)03d - %(levelname)s: %(message)s',
+		datefmt='%y-%m-%d %H:%M:%S'
+	)
 
-    # seg
-    with open(args.config_path, 'r') as f:
-        model_configs = json.load(f)
-    linearlayer = LinearLayer(model_configs['vision_cfg']['width'], model_configs['embed_dim'],
-                              len(features_list), args.model).to(device)
-    checkpoint = torch.load(args.checkpoint_path)
-    linearlayer.load_state_dict(checkpoint["trainable_linearlayer"])
+	file_handler = logging.FileHandler(txt_path, mode='a')
+	file_handler.setFormatter(formatter)
+	logger.addHandler(file_handler)
 
-    # dataset
-    transform = transforms.Compose([
-            transforms.Resize((img_size, img_size)),
-            transforms.CenterCrop(img_size),
-            transforms.ToTensor()
-        ])
-    if args.dataset == 'mvtec':
-        test_data = MVTecDataset(root=dataset_dir, transform=preprocess, target_transform=transform, aug_rate=-1, mode='test')
-        gt_defect = {"good":0, "bent":1, "bent_lead":1, "bent_wire":1, "manipulated_front":1, "broken":2, "broken_large":2, "broken_small":2, "broken_teeth":2, "color":3, "combined":4, "contamination":5, "metal_contamination":5, "crack":6, "cut":7, "cut_inner_insulation":7, "cut_lead":7, "cut_outer_insulation":7, "fabric":8, "fabric_border":8, "fabric_interior":8, "faulty_imprint":9, "print":9, "glue":10, "glue_strip":10, "hole":11, "missing":12, "missing_wire":12, "missing_cable":12, "poke":13, "poke_insulation":13, "rough":14, "scratch":15, "scratch_head":15, "scratch_neck":15, "squeeze":16, "squeezed_teeth":16, "thread":17, "thread_side":17, "thread_top":17, "liquid":18, "oil":18, "misplaced":19, "cable_swap":19, "flip":19, "fold":19, "split_teeth":19, "damaged_case":20, "defective":20, "gray_stroke":20, "pill_type":20}  
-        defects = ['good', 'bent', 'broken', 'color', 'combined', 'contamination', 'crack', 'cut', 'fabric', 'faulty imprint', 'glue', 'hole', 'missing', 'poke', 'rough', 'scratch', 'squeeze', 'thread', 'liquid', 'misplaced', 'damaged']
-        p_cls2d_cls = product_type2defect_type_mvtec
-        
-    elif args.dataset == 'visa':
-        test_data = VisaDataset(root=dataset_dir, transform=preprocess, target_transform=transform, mode='test')
-        gt_defect = {'normal': 0, 'damage': 1, 'scratch':2, 'breakage': 3, 'burnt': 4, 'weird wick': 5, 'stuck': 6, 'crack': 7, 'wrong place': 8, 'partical': 9, 'bubble': 10, 'melded': 11, 'hole': 12, 'melt': 13, 'bent':14, 'spot': 15, 'extra': 16, 'chip': 17, 'missing': 18}
-        defects = ['normal', 'damage', 'scratch', 'breakage', 'burnt', 'weird wick', 'stuck', 'crack', 'wrong place', 'partical', 'bubble', 'melded', 'hole', 'melt', 'bent', 'spot', 'extra', 'chip', 'missing', 'discolor', 'leak']
-        p_cls2d_cls = product_type2defect_type_visa
-    elif args.dataset == 'mpdd':
-        test_data = MPDDDataset(root=dataset_dir, transform=preprocess, target_transform=transform, aug_rate=-1, mode='test')
-        gt_defect =  {"good":0, 'hole':1, 'scratches':2, 'bend_and_parts_mismatch':3, 'parts_mismatch':4, 'defective_painting':5, 'major_rust':6, 'total_rust':6, 'flattening':7}
-        defects = ['good', 'hole', 'scratch', 'bent', 'mismatch', 'defective painting', 'rust', 'flattening']
-        p_cls2d_cls = product_type2defect_type_mpdd
-    elif args.dataset == 'real_iad':
-        test_data = RealIADDataset_v2(root=dataset_dir, transform=preprocess, aug_rate=-1, target_transform=transform, mode='test')
-        defects = ['good', 'pit', 'deformation', 'abrasion', 'scratch', 'damage', 'missing', 'foreign', 'contamination']
-        p_cls2d_cls = product_type2defect_type_real_iad
-    elif args.dataset == 'mad_sim':
-        test_data = MADDataset(root=dataset_dir, transform=preprocess, target_transform=transform, mode='test')
-        defects = ['good', 'Stains', 'Missing', 'Burrs']
-        p_cls2d_cls = product_type2defect_type_mad_sim
-    elif args.dataset == 'mad_real':
-        test_data = MADDataset(root=dataset_dir, transform=preprocess, target_transform=transform, mode='test')
-        defects = ['good', 'Stains', 'Missing']
-        p_cls2d_cls = product_type2defect_type_mad_real
+	console_handler = logging.StreamHandler()
+	console_handler.setFormatter(formatter)
+	logger.addHandler(console_handler)
 
+	# record parameters
+	for arg in vars(args):
+		if args.mode == 'zero_shot' and (arg == 'k_shot' or arg == 'few_shot_features'):
+			continue
+		logger.info(f'{arg}: {getattr(args, arg)}')
 
+	# seg
+	with open(args.config_path, 'r') as f:
+		model_configs = json.load(f)
 
-    test_dataloader = torch.utils.data.DataLoader(test_data, batch_size=1, shuffle=False)
-    obj_list = test_data.get_cls_names()
+	linearlayer = LinearLayer(
+		model_configs['vision_cfg']['width'],
+		model_configs['embed_dim'],
+		len(features_list),
+		args.model
+	).to(device)
 
+	checkpoint = torch.load(args.checkpoint_path, map_location=device)
+	linearlayer.load_state_dict(checkpoint["trainable_linearlayer"])
+	linearlayer.eval()
 
+	# dataset
+	target_transform_b = transforms.Compose([
+		transforms.Resize((img_size, img_size)),
+		transforms.CenterCrop(img_size),
+		transforms.ToTensor()
+	])
+	target_transform_type = transforms.Compose([
+		transforms.Resize((img_size, img_size), interpolation=InterpolationMode.NEAREST),
+		transforms.CenterCrop(img_size),
+		transforms.PILToTensor(),
+		transforms.Lambda(lambda x: x.squeeze(0).long()),
+	])
 
-    # few shot
-    if args.mode == 'few_shot':
-        mem_features = memory(args.model, model, obj_list, dataset_dir, save_path, preprocess, transform,
-                              args.k_shot, few_shot_features, dataset_name, device)
+	if args.dataset == 'mvtec':
+		test_data = MVTecDataset(
+			root=dataset_dir,
+			transform=preprocess,
+			target_transform=target_transform_b,
+			target_transform_type=target_transform_type,
+			aug_rate=-1,
+			mode='test'
+		)
+		defects = [
+			'good', 'bent', 'broken', 'color', 'combined', 'contamination',
+			'crack', 'cut', 'fabric', 'faulty imprint', 'glue', 'hole',
+			'missing', 'poke', 'rough', 'scratch', 'squeeze', 'thread',
+			'liquid', 'misplaced', 'damaged'
+		]
+		p_cls2d_cls = product_type2defect_type_mvtec
 
-    # text prompt
-    with torch.cuda.amp.autocast(), torch.no_grad():
-        if args.dataset == 'mvtec':
-            text_prompts = encode_text_with_prompt_ensemble_mvtec(model, obj_list, tokenizer, device)
-        elif args.dataset == 'visa':
-            text_prompts = encode_text_with_prompt_ensemble_visa(model, obj_list, tokenizer, device)
-        elif args.dataset == 'mpdd':
-            text_prompts = encode_text_with_prompt_ensemble_mpdd(model, obj_list, tokenizer, device)
-        elif args.dataset == 'mad_real':
-            text_prompts = encode_text_with_prompt_ensemble_mad_real(model, obj_list, tokenizer, device)
-        elif args.dataset == 'mad_sim':
-            text_prompts = encode_text_with_prompt_ensemble_mad_sim(model, obj_list, tokenizer, device)
-        elif args.dataset == 'real_iad':
-            text_prompts = encode_text_with_prompt_ensemble_real_iad(model, obj_list, tokenizer, device)
+	elif args.dataset == 'visa':
+		test_data = VisaDatasetTest(
+			root=dataset_dir,
+			transform=preprocess,
+			target_transform=target_transform_b,
+			mode='test'
+		)
+		defects = [
+			'normal', 'damage', 'scratch', 'breakage', 'burnt', 'weird wick',
+			'stuck', 'crack', 'wrong place', 'partical', 'bubble', 'melded',
+			'hole', 'melt', 'bent', 'spot', 'extra', 'chip', 'missing',
+			'discolor', 'leak'
+		]
+		p_cls2d_cls = product_type2defect_type_visa
 
-    results = {}
-    results['cls_names'] = [] # product class
-    results['imgs_masks'] = []
-    results['anomaly_maps'] = []
-    results['gt_sp'] = []
-    results['pr_sp'] = []
+	elif args.dataset == 'mpdd':
+		test_data = MPDDDataset(
+			root=dataset_dir,
+			transform=preprocess,
+			target_transform=target_transform_b,
+			target_transform_type=target_transform_type,
+			aug_rate=-1,
+			mode='test'
+		)
+		defects = ['good', 'hole', 'scratch', 'bent', 'mismatch', 'defective painting', 'rust', 'flattening']
+		p_cls2d_cls = product_type2defect_type_mpdd
 
-    for items in test_dataloader:
-        image = items['img'].to(device)
-        cls_name = items['cls_name']
-        paths = items['img_path']
-        results['cls_names'].append(cls_name[0])
+	elif args.dataset == 'real_iad':
+		test_data = RealIADDataset_v2(
+			root=dataset_dir,
+			transform=preprocess,
+			target_transform=target_transform_b,
+			target_transform_type=target_transform_type,
+			mode='test'
+		)
+		defects = ['good', 'pit', 'deformation', 'abrasion', 'scratch', 'damage', 'missing', 'foreign', 'contamination']
+		p_cls2d_cls = product_type2defect_type_real_iad
 
-        img_masks = items['img_mask']
+	elif args.dataset == 'mad_sim':
+		test_data = MADDataset(
+			root=dataset_dir,
+			transform=preprocess,
+			target_transform=target_transform_b,
+			target_transform_type=target_transform_type,
+			mode='test',
+			datatype='sim'
+		)
+		defects = ['good', 'Stains', 'Missing', 'Burrs']
+		p_cls2d_cls = product_type2defect_type_mad_sim
 
-        # if args.dataset == 'mvtec' or args.dataset == 'mpdd':
-        #     cls_id = []               
-        #     for i in paths:
-        #         match = re.search(r'\/([^\/]+)\/[^\/]*$', i) # './data/mvtec/transistor/test/good/004.png', './data/mvtec/carpet/test/hole/002.png', './data/mvtec/metal_nut/test/scratch/004.png',
-        #         cls_id.append(int(gt_defect[str(match.group(1))]))
-        # elif args.dataset == 'visa':
-        #     defect_cls = items['defect_cls']
-        #     cls_id = [gt_defect[name] for name in defect_cls]
+	elif args.dataset == 'mad_real':
+		test_data = MADDataset(
+			root=dataset_dir,
+			transform=preprocess,
+			target_transform=target_transform_b,
+			target_transform_type=target_transform_type,
+			mode='test',
+			datatype='real'
+		)
+		defects = ['good', 'Stains', 'Missing']
+		p_cls2d_cls = product_type2defect_type_mad_real
 
-        gt_mask = items['img_mask']
-        
-        for i in range(gt_mask.size(0)):
-            gt_mask[i][gt_mask[i] > 0.5], gt_mask[i][gt_mask[i] <= 0.5] = 1, 0 
-        
+	else:
+		raise ValueError(f"Unsupported dataset: {args.dataset}")
 
-        results['imgs_masks'].append(gt_mask)  # px
-        results['gt_sp'].append(items['anomaly'].item())
+	test_dataloader = torch.utils.data.DataLoader(test_data, batch_size=1, shuffle=False)
+	obj_list = test_data.get_cls_names()
 
-        with torch.no_grad(), torch.cuda.amp.autocast():
-            image_features, patch_tokens = model.encode_image(image, features_list)
-            image_features /= image_features.norm(dim=-1, keepdim=True)
+	# few-shot
+	if args.mode == 'few_shot':
+		mem_features = memory_fs(
+			args.model, model, obj_list, dataset_dir, save_path, preprocess,
+			target_transform_b, target_transform_type,
+			args.k_shot, few_shot_features, dataset_name, device
+		)
 
-            text_features = []
-            for cls in cls_name:
-                defects_indices = [defects.index(d) for d in p_cls2d_cls[cls]]
-                text_features.append(text_prompts[cls][:,defects_indices])
+	if args.mode == 'domain_adaption':
+		mem_features = memory_da(
+			args.model, model, obj_list, dataset_dir, save_path, preprocess,
+			target_transform_b, target_transform_type,
+			few_shot_features, dataset_name, device
+		)
 
-            
-            text_features = torch.stack(text_features, dim=0)
+	# text prompt
+	with torch.cuda.amp.autocast(enabled=torch.cuda.is_available()), torch.no_grad():
+		if args.dataset == 'mvtec':
+			text_prompts = encode_text_with_prompt_ensemble_mvtec(model, obj_list, tokenizer, device)
+		elif args.dataset == 'visa':
+			text_prompts = encode_text_with_prompt_ensemble_visa(model, obj_list, tokenizer, device)
+		elif args.dataset == 'mpdd':
+			text_prompts = encode_text_with_prompt_ensemble_mpdd(model, obj_list, tokenizer, device)
+		elif args.dataset == 'mad_real':
+			text_prompts = encode_text_with_prompt_ensemble_mad_real(model, obj_list, tokenizer, device)
+		elif args.dataset == 'mad_sim':
+			text_prompts = encode_text_with_prompt_ensemble_mad_sim(model, obj_list, tokenizer, device)
+		elif args.dataset == 'real_iad':
+			text_prompts = encode_text_with_prompt_ensemble_real_iad(model, obj_list, tokenizer, device)
+		else:
+			raise ValueError(f"Unsupported dataset: {args.dataset}")
 
-            # sample
-            text_probs = (100.0 * image_features @ text_features[0]).softmax(dim=-1) # B, H, W
-            # pdb.set_trace()
-            results['pr_sp'].append(sum(text_probs[0][1:]).cpu().item())
+	defect_to_idx = {d: i for i, d in enumerate(defects)}
 
-            # pixel
-            patch_tokens = linearlayer(patch_tokens)
-            anomaly_maps = []
-            for layer in range(len(patch_tokens)):
-                patch_tokens[layer] /= patch_tokens[layer].norm(dim=-1, keepdim=True)
-                anomaly_map = (100.0 * patch_tokens[layer] @ text_features)
-                B, L, C = anomaly_map.shape
-                H = int(np.sqrt(L))
-                anomaly_map = F.interpolate(anomaly_map.permute(0, 2, 1).view(B, C, H, H),
-                                            size=img_size, mode='bilinear', align_corners=True)
-                anomaly_map = torch.sum(torch.softmax(anomaly_map, dim=1)[:, 1:, :, :], dim=1)
-                # anomaly_map = torch.stack((anomaly_map[:,0], torch.amax(anomaly_map[:,1:], dim=1)), dim=1) # to binary anormaly map 
-                # anomaly_map = torch.softmax(anomaly_map, dim=1)[:, 1]
-                # anomaly_map = torch.softmax(anomaly_map, dim=1)[:, :, :, :]
+	results = {
+		'cls_names': [],
+		'imgs_masks': [],
+		'anomaly_maps': [],
+		'gt_sp': [],
+		'pr_sp': [],
+	}
 
-                anomaly_maps.append(anomaly_map.cpu().numpy())
-            anomaly_map = np.sum(anomaly_maps, axis=0)
+	for items in tqdm(test_dataloader, desc="Testing", leave=True):
+		image = items['img'].to(device)
+		cls_name = items['cls_name']
+		results['cls_names'].append(cls_name[0])
 
-            # few shot
-            if args.mode == 'few_shot':
-                image_features, patch_tokens = model.encode_image(image, few_shot_features)
-                anomaly_maps_few_shot = []
-                for idx, p in enumerate(patch_tokens):
-                    if 'ViT' in args.model:
-                        p = p[0, 1:, :]
-                    else:
-                        p = p[0].view(p.shape[1], -1).permute(1, 0).contiguous()
-                    cos = pairwise.cosine_similarity(mem_features[cls_name[0]][idx].cpu(), p.cpu())
-                    height = int(np.sqrt(cos.shape[1]))
-                    anomaly_map_few_shot = np.min((1 - cos), 0).reshape(1, 1, height, height)
-                    anomaly_map_few_shot = F.interpolate(torch.tensor(anomaly_map_few_shot),
-                                                         size=img_size, mode='bilinear', align_corners=True)
-                    anomaly_maps_few_shot.append(anomaly_map_few_shot[0].cpu().numpy())
-                anomaly_map_few_shot = np.sum(anomaly_maps_few_shot, axis=0)
-                anomaly_map = anomaly_map + anomaly_map_few_shot
-            
-            results['anomaly_maps'].append(anomaly_map)
+		gt_mask = items['img_mask_b'].clone()
+		for i in range(gt_mask.size(0)):
+			gt_mask[i][gt_mask[i] > 0.5], gt_mask[i][gt_mask[i] <= 0.5] = 1, 0
 
-            # visualization
-            path = items['img_path']
-            cls = path[0].split('/')[-2]
-            filename = path[0].split('/')[-1]
-            vis = cv2.cvtColor(cv2.resize(cv2.imread(path[0]), (img_size, img_size)), cv2.COLOR_BGR2RGB)  # RGB
-            mask = normalize(anomaly_map[0])
-            vis = apply_ad_scoremap(vis, mask)
-            vis = cv2.cvtColor(vis, cv2.COLOR_RGB2BGR)  # BGR
-            save_vis = os.path.join(save_path, 'imgs', cls_name[0], cls)
-            if not os.path.exists(save_vis):
-                os.makedirs(save_vis)
-            cv2.imwrite(os.path.join(save_vis, filename), vis)
+		results['imgs_masks'].append(gt_mask.cpu().numpy())
+		results['gt_sp'].append(items['anomaly'].item())
 
-    # metrics
-    table_ls = []
-    auroc_sp_ls = []
-    auroc_px_ls = []
-    f1_sp_ls = []
-    f1_px_ls = []
-    aupro_ls = []
-    ap_sp_ls = []
-    ap_px_ls = []
-    for obj in obj_list:
-        table = []
-        gt_px = []
-        pr_px = []
-        gt_sp = []
-        pr_sp = []
-        pr_sp_tmp = []
-        table.append(obj)
-        for idxes in range(len(results['cls_names'])):
-            if results['cls_names'][idxes] == obj:
-                gt_px.append(results['imgs_masks'][idxes].squeeze(1).numpy())
-                pr_px.append(results['anomaly_maps'][idxes])
-                pr_sp_tmp.append(np.max(results['anomaly_maps'][idxes]))
-                gt_sp.append(results['gt_sp'][idxes])
-                # pdb.set_trace()
-                pr_sp.append(results['pr_sp'][idxes])
-        gt_px = np.array(gt_px)
-        gt_sp = np.array(gt_sp)
-        pr_px = np.array(pr_px)
-        pr_sp = np.array(pr_sp)
-        # if args.mode == 'few_shot':
-        pr_sp_tmp = np.array(pr_sp_tmp)
-        pr_sp_tmp = (pr_sp_tmp - pr_sp_tmp.min()) / (pr_sp_tmp.max() - pr_sp_tmp.min())
-        pr_sp = 0.5 * (pr_sp + pr_sp_tmp)
+		with torch.no_grad(), torch.cuda.amp.autocast(enabled=torch.cuda.is_available()):
+			image_features, patch_tokens = model.encode_image(image, features_list)
+			image_features /= image_features.norm(dim=-1, keepdim=True)
 
-        # pdb.set_trace()
-        auroc_px = roc_auc_score(gt_px.ravel(), pr_px.ravel()) #, multi_class='ovo', labels = class_ids)
-        auroc_sp = roc_auc_score(gt_sp, pr_sp) #, multi_class='ovo', labels = class_ids)
-        ap_sp = average_precision_score(gt_sp, pr_sp)
-        ap_px = average_precision_score(gt_px.ravel(), pr_px.ravel())
-        # f1_sp
-        precisions, recalls, thresholds = precision_recall_curve(gt_sp, pr_sp)
-        f1_scores = (2 * precisions * recalls) / (precisions + recalls)
-        f1_sp = np.max(f1_scores[np.isfinite(f1_scores)])
-        # f1_px
-        precisions, recalls, thresholds = precision_recall_curve(gt_px.ravel(), pr_px.ravel())
-        f1_scores = (2 * precisions * recalls) / (precisions + recalls)
-        f1_px = np.max(f1_scores[np.isfinite(f1_scores)])
-        # aupro
-        if len(gt_px.shape) == 4:
-            gt_px = gt_px.squeeze(1)
-        if len(pr_px.shape) == 4:
-            pr_px = pr_px.squeeze(1)
-        aupro = cal_pro_score(gt_px, pr_px)
+			text_features = []
+			for cls in cls_name:
+				defects_indices = [defect_to_idx[d] for d in p_cls2d_cls[cls]]
+				text_features.append(text_prompts[cls][:, defects_indices])
 
-        table.append(str(np.round(auroc_px * 100, decimals=1)))
-        table.append(str(np.round(f1_px * 100, decimals=1)))
-        table.append(str(np.round(ap_px * 100, decimals=1)))
-        table.append(str(np.round(aupro * 100, decimals=1)))
-        table.append(str(np.round(auroc_sp * 100, decimals=1)))
-        table.append(str(np.round(f1_sp * 100, decimals=1)))
-        table.append(str(np.round(ap_sp * 100, decimals=1)))
+			text_features = torch.stack(text_features, dim=0)
 
-        table_ls.append(table)
-        auroc_sp_ls.append(auroc_sp)
-        auroc_px_ls.append(auroc_px)
-        f1_sp_ls.append(f1_sp)
-        f1_px_ls.append(f1_px)
-        aupro_ls.append(aupro)
-        ap_sp_ls.append(ap_sp)
-        ap_px_ls.append(ap_px)
+			# image-level
+			text_probs = (image_features @ text_features[0] / args.temperature).softmax(dim=-1)
+			results['pr_sp'].append(text_probs[0][1:].sum().cpu().item())
 
-    # logger
-    table_ls.append(['mean', str(np.round(np.mean(auroc_px_ls) * 100, decimals=1)),
-                     str(np.round(np.mean(f1_px_ls) * 100, decimals=1)), str(np.round(np.mean(ap_px_ls) * 100, decimals=1)),
-                     str(np.round(np.mean(aupro_ls) * 100, decimals=1)), str(np.round(np.mean(auroc_sp_ls) * 100, decimals=1)),
-                     str(np.round(np.mean(f1_sp_ls) * 100, decimals=1)), str(np.round(np.mean(ap_sp_ls) * 100, decimals=1))])
-    results = tabulate(table_ls, headers=['objects', 'auroc_px', 'f1_px', 'ap_px', 'aupro', 'auroc_sp',
-                                          'f1_sp', 'ap_sp'], tablefmt="pipe")
-    logger.info("\n%s", results)
+			# pixel-level
+			patch_tokens = linearlayer(patch_tokens)
+			anomaly_maps = []
+			for layer in range(len(patch_tokens)):
+				patch_tokens[layer] /= patch_tokens[layer].norm(dim=-1, keepdim=True)
+				anomaly_map = (patch_tokens[layer] @ text_features / args.temperature)
+				B, L, C = anomaly_map.shape
+				H = int(np.sqrt(L))
+
+				anomaly_map = F.interpolate(
+					anomaly_map.permute(0, 2, 1).view(B, C, H, H),
+					size=img_size,
+					mode='bilinear',
+					align_corners=True
+				)
+				anomaly_map = torch.softmax(anomaly_map, dim=1)[:, 1:, :, :].sum(dim=1)
+				anomaly_maps.append(anomaly_map.cpu().numpy())
+
+			anomaly_map = np.sum(anomaly_maps, axis=0)
+
+			# few-shot
+			if args.mode == 'few_shot':
+				_, patch_tokens_fs = model.encode_image(image, few_shot_features)
+				anomaly_maps_few_shot = []
+				for idx, p in enumerate(patch_tokens_fs):
+					if 'ViT' in args.model:
+						p = p[0, 1:, :]
+					else:
+						p = p[0].view(p.shape[1], -1).permute(1, 0).contiguous()
+
+					cos = pairwise.cosine_similarity(mem_features[cls_name[0]][idx].cpu(), p.cpu())
+					height = int(np.sqrt(cos.shape[1]))
+					anomaly_map_few_shot = np.min((1 - cos), 0).reshape(1, 1, height, height)
+					anomaly_map_few_shot = F.interpolate(
+						torch.tensor(anomaly_map_few_shot),
+						size=img_size,
+						mode='bilinear',
+						align_corners=True
+					)
+					anomaly_maps_few_shot.append(anomaly_map_few_shot[0].cpu().numpy())
+
+				anomaly_map_few_shot = np.sum(anomaly_maps_few_shot, axis=0)
+				anomaly_map = anomaly_map + anomaly_map_few_shot
+
+			# domain adaption
+			if args.mode == 'domain_adaption':
+				_, patch_tokens_da = model.encode_image(image, few_shot_features)
+				anomaly_maps_da = []
+				for idx, p in enumerate(patch_tokens_da):
+					if 'ViT' in args.model:
+						p = p[0, 1:, :]
+					else:
+						p = p[0].view(p.shape[1], -1).permute(1, 0).contiguous()
+
+					cos = pairwise.cosine_similarity(mem_features[cls_name[0]][idx].cpu(), p.cpu())
+					M, _ = cos.shape
+					height = int(np.sqrt(cos.shape[1]))
+					distances = 1.0 - cos
+
+					k = max(1, int(np.ceil(M * args.quantile)))
+					smallest_kplus1 = np.partition(distances, k, axis=0)[:k+1, :]
+					sorted_smallest_kplus1 = np.sort(smallest_kplus1, axis=0)
+					smallest_k = sorted_smallest_kplus1[1:k+1, :]
+					avg_smallest = smallest_k.mean(axis=0)
+
+					anomaly_map_da = avg_smallest.reshape(1, 1, height, height)
+					anomaly_map_da = F.interpolate(
+						torch.tensor(anomaly_map_da),
+						size=img_size,
+						mode='bilinear',
+						align_corners=True
+					)
+					anomaly_maps_da.append(anomaly_map_da[0].cpu().numpy())
+
+				anomaly_map_da = np.sum(anomaly_maps_da, axis=0)
+				anomaly_map = anomaly_map + anomaly_map_da
+
+			results['anomaly_maps'].append(anomaly_map)
+
+			# visualization
+			if args.visualization:
+				path = items['img_path']
+				cls = path[0].split('/')[-2]
+				filename = path[0].split('/')[-1]
+				vis = cv2.cvtColor(cv2.resize(cv2.imread(path[0]), (img_size, img_size)), cv2.COLOR_BGR2RGB)
+				mask = normalize(anomaly_map[0])
+				vis = apply_ad_scoremap(vis, mask)
+				vis = cv2.cvtColor(vis, cv2.COLOR_RGB2BGR)
+				save_vis = os.path.join(save_path, 'imgs', cls_name[0], cls)
+				os.makedirs(save_vis, exist_ok=True)
+				cv2.imwrite(os.path.join(save_vis, filename), vis)
+
+	# metrics (multi-cpu)
+	table_ls = []
+	auroc_sp_ls = []
+	auroc_px_ls = []
+	f1_sp_ls = []
+	f1_px_ls = []
+	aupro_ls = []
+	ap_sp_ls = []
+	ap_px_ls = []
+
+	if args.eval_workers <= 0:
+		num_workers = min(len(obj_list), os.cpu_count() or 1)
+	else:
+		num_workers = min(args.eval_workers, len(obj_list))
+
+	with ProcessPoolExecutor(max_workers=num_workers) as executor:
+		futures = {
+			executor.submit(
+				evaluate_one_object,
+				obj,
+				results['cls_names'],
+				results['imgs_masks'],
+				results['anomaly_maps'],
+				results['gt_sp'],
+				results['pr_sp'],
+			): obj
+			for obj in obj_list
+		}
+
+		for future in tqdm(as_completed(futures), total=len(futures), desc="Evaluating objects (CPU)", leave=True):
+			ret = future.result()
+			table_ls.append(ret["table"])
+			auroc_sp_ls.append(ret["auroc_sp"])
+			auroc_px_ls.append(ret["auroc_px"])
+			f1_sp_ls.append(ret["f1_sp"])
+			f1_px_ls.append(ret["f1_px"])
+			aupro_ls.append(ret["aupro"])
+			ap_sp_ls.append(ret["ap_sp"])
+			ap_px_ls.append(ret["ap_px"])
+
+	# keep table order same as obj_list
+	table_ls = sorted(table_ls, key=lambda x: obj_list.index(x[0]))
+
+	table_ls.append([
+		'mean',
+		str(np.round(np.mean(auroc_px_ls) * 100, decimals=1)),
+		str(np.round(np.mean(f1_px_ls) * 100, decimals=1)),
+		str(np.round(np.mean(ap_px_ls) * 100, decimals=1)),
+		str(np.round(np.mean(aupro_ls) * 100, decimals=1)),
+		str(np.round(np.mean(auroc_sp_ls) * 100, decimals=1)),
+		str(np.round(np.mean(f1_sp_ls) * 100, decimals=1)),
+		str(np.round(np.mean(ap_sp_ls) * 100, decimals=1))
+	])
+
+	results = tabulate(
+		table_ls,
+		headers=['objects', 'auroc_px', 'f1_px', 'ap_px', 'aupro', 'auroc_sp', 'f1_sp', 'ap_sp'],
+		tablefmt="pipe"
+	)
+	logger.info("\n%s", results)
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser("MultiADS", add_help=True)
-    # paths
-    parser.add_argument("--data_path", type=str, default="./data/visa", help="path to test dataset")
-    parser.add_argument("--save_path", type=str, default='./results/tiaoshi', help='path to save results')
-    parser.add_argument("--checkpoint_path", type=str, default='./exps/vit_huge_14/model_epoch12.pth', help='path to save results')
-    parser.add_argument("--config_path", type=str, default='./open_clip/model_configs/ViT-B-16.json', help="model configs")
-    # model
-    parser.add_argument("--dataset", type=str, default='mvtec', help="test dataset")
-    parser.add_argument("--model", type=str, default="ViT-B-16", help="model used")
-    parser.add_argument("--pretrained", type=str, default="laion400m_e32", help="pretrained weight used")
-    parser.add_argument("--features_list", type=int, nargs="+", default=[3, 6, 9], help="features used")
-    parser.add_argument("--few_shot_features", type=int, nargs="+", default=[3, 6, 9], help="features used for few shot")
-    parser.add_argument("--image_size", type=int, default=224, help="image size")
-    parser.add_argument("--mode", type=str, default="zero_shot", help="zero shot or few shot")
-    # few shot
-    parser.add_argument("--k_shot", type=int, default=10, help="e.g., 10-shot, 5-shot, 1-shot")
-    parser.add_argument("--seed", type=int, default=42, help="random seed")
-    args = parser.parse_args()
+	parser = argparse.ArgumentParser("MultiADS", add_help=True)
 
-    setup_seed(args.seed)
-    test(args)
+	# paths
+	parser.add_argument("--data_path", type=str, default="./data/visa", help="path to test dataset")
+	parser.add_argument("--save_path", type=str, default='./results/visa/zero_shot/', help='path to save results')
+	parser.add_argument("--checkpoint_path", type=str, default='./exps/mvtec/epoch_1.pth', help='path to save results')
+	parser.add_argument("--config_path", type=str, default='./open_clip/model_configs/ViT-L-14-336.json', help="model configs")
+
+	# model
+	parser.add_argument("--dataset", type=str, default='visa', help="test dataset")
+	parser.add_argument("--model", type=str, default="ViT-L-14-336", help="model used")
+	parser.add_argument("--pretrained", type=str, default="openai", help="pretrained weight used")
+	parser.add_argument("--features_list", type=int, nargs="+", default=[6, 12, 18, 24], help="features used")
+	parser.add_argument("--few_shot_features", type=int, nargs="+", default=[6, 12, 18, 24], help="features used for few shot")
+	parser.add_argument("--image_size", type=int, default=518, help="image size")
+	parser.add_argument("--mode", type=str, default="zero_shot", help="zero shot or few shot or domain adaption")
+	parser.add_argument("--temperature", type=float, default=0.01, help="temperature for constrastive learning")
+
+	# few shot
+	parser.add_argument("--k_shot", type=int, default=10, help="e.g., 10-shot, 5-shot, 1-shot")
+
+	# domain adaption
+	parser.add_argument("--quantile", type=float, default=0.0001, help="percent of the qunatile of nearest neighbour")
+
+	# cpu eval workers
+	parser.add_argument("--eval_workers", type=int, default=0, help="number of CPU workers for object-level evaluation; 0 means auto")
+
+	parser.add_argument("--seed", type=int, default=42, help="random seed")
+	parser.add_argument('--visualization', action='store_true')
+
+	args = parser.parse_args()
+
+	setup_seed(args.seed)
+	test(args)
