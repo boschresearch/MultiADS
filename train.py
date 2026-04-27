@@ -195,12 +195,11 @@ def train(args):
             # losses
             loss = 0.0
             for num in range(len(anomaly_maps)):              
-                loss += loss_focal(anomaly_maps[num], img_mask) # a->xyz b->abc 21, 518,518
-                loss += loss_dice(torch.sum(anomaly_maps[num][:, 1:, :, :], dim=1), img_mask_b)
+                loss += (loss_focal(anomaly_maps[num], img_mask) \
+                    + loss_dice(torch.sum(anomaly_maps[num][:, 1:, :, :], dim=1), img_mask_b)) / 2.0
                 
             
             loss /= len(anomaly_maps)
-            loss /= 2.0
 
             optimizer.zero_grad()
             loss.backward()
