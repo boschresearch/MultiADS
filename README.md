@@ -24,6 +24,7 @@ We present MultiADS, the first framework that goes beyond binary “good/bad” 
 
 
 ## News
+- 08/27/2026: Fixed a major bug that had left `train.py` unrunnable for four months: the merge of [PR#26](https://github.com/boschresearch/MultiADS/pull/26) resolved `train.py` and `dataset.py` to the wrong side and dropped that branch's changes.
 - 27/04/2026: Data augmentation bugs are fixed (see [Issue#15](https://github.com/boschresearch/MultiADS/issues/15))
 - 01/22/2026: The code base of DAPO is now available [here](https://github.com/boschresearch/defect-aware-prompt-optimization). 
 - 12/07/2025: The extension of MultiADS, Defect-aware Hybrid Prompt Optimization (DAPO), is now available at [here](https://www.arxiv.org/abs/2512.09446). The code base will be released [here](https://github.com/boschresearch/defect-aware-prompt-optimization).
