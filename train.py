@@ -18,13 +18,15 @@ import logging
 from torchvision.transforms import InterpolationMode
 
 import open_clip
-from dataset import VisaDatasetV2, MVTecDataset, MPDDDataset, RealIADDataset_v2
+from dataset import VisaDatasetV2, MVTecDataset, MPDDDataset, RealIADDataset_v2, MADDataset
 from model import LinearLayer
 from loss import FocalLoss, BinaryDiceLoss
 from prompts.prompt_ensemble_mvtec_20cls import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mvtec
 from prompts.prompt_ensemble_visa_19cls import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_visa
 from prompts.new_prompt_ensemble_mpdd import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mpdd
 from prompts.prompt_ensemble_real_IAD_simple import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_real_iad
+from prompts.prompt_ensemble_mad_sim import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mad_sim
+from prompts.prompt_ensemble_mad_real import encode_text_with_prompt_ensemble as encode_text_with_prompt_ensemble_mad_real
 from tqdm import tqdm
 import csv
 
@@ -107,14 +109,22 @@ def train(args):
 
 
     # datasets
-    assert args.dataset in ['mvtec', 'visa', 'mpdd'] 
+    assert args.dataset in ['mvtec', 'visa', 'mpdd', 'real_iad', 'mad_sim', 'mad_real']
     if args.dataset == 'mvtec':
-        train_data = MVTecDataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type, 
+        train_data = MVTecDataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type,
                                 aug_rate=args.aug_rate)
     elif args.dataset == 'visa':
         train_data = VisaDatasetV2(root=args.train_data_path, transform=preprocess, target_transform_b=target_transform_b,target_transform_type = target_transform_type)
     elif args.dataset == 'mpdd':
-        train_data =  MPDDDataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform_b, aug_rate=args.aug_rate)
+        train_data =  MPDDDataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type)
+    elif args.dataset == 'real_iad':
+        train_data = RealIADDataset_v2(root=args.train_data_path, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type)
+    elif args.dataset == 'mad_sim':
+        train_data = MADDataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type,
+                                datatype='sim')
+    elif args.dataset == 'mad_real':
+        train_data = MADDataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform_b, target_transform_type = target_transform_type,
+                                datatype='real')
 
 
     train_dataloader = torch.utils.data.DataLoader(train_data, batch_size=batch_size, shuffle=True)
@@ -141,6 +151,10 @@ def train(args):
             text_prompts = encode_text_with_prompt_ensemble_mpdd(model, obj_list, tokenizer, device)
         elif args.dataset == 'real_iad':
             text_prompts = encode_text_with_prompt_ensemble_real_iad(model, obj_list, tokenizer, device)
+        elif args.dataset == 'mad_sim':
+            text_prompts = encode_text_with_prompt_ensemble_mad_sim(model, obj_list, tokenizer, device)
+        elif args.dataset == 'mad_real':
+            text_prompts = encode_text_with_prompt_ensemble_mad_real(model, obj_list, tokenizer, device)
 
     for epoch in range(epochs):
         print("EPOCH = ", epoch)
@@ -222,7 +236,9 @@ if __name__ == '__main__':
     parser.add_argument("--save_path", type=str, default='./exps/mvtec/', help='path to save results')
     parser.add_argument("--config_path", type=str, default='./open_clip/model_configs/ViT-L-14-336.json', help="model configs")
     # model
-    parser.add_argument("--dataset", type=str, default='mvtec', help="train dataset name")
+    parser.add_argument("--dataset", type=str, default='mvtec',
+                        choices=['mvtec', 'visa', 'mpdd', 'real_iad', 'mad_sim', 'mad_real'],
+                        help="train dataset name")
     parser.add_argument("--model", type=str, default="ViT-L-14-336", help="model used")
     parser.add_argument("--pretrained", type=str, default="openai", help="pretrained weight used")
     parser.add_argument("--features_list", type=int, nargs="+", default=[6, 12, 18, 24], help="features used")
